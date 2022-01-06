@@ -1,0 +1,53 @@
+version: "2.4"
+services:
+  app:
+    build:
+      context: ./app
+      dockerfile: Dockerfile
+    volumes:
+      - "./app:/app"
+    ports:
+      - 1024:1024
+    links:
+      - redis
+      - db
+    restart: always
+    healthcheck:
+      test: curl -f localhost:1024
+      interval: 1s
+      timeout: 3s
+      retries: 30
+    depends_on:
+      - redis
+      - db
+  redis:
+    image: redis
+    command: redis-server --appendonly yes --requirepass "FWAjnQm8QBWWLrLSx5Z7VA"
+    volumes:
+      - "./data/redis:/data"
+    ports:
+      - "6379:6379"
+    restart: always
+    healthcheck:
+      test: redis-cli ping
+      interval: 1s
+      timeout: 3s
+      retries: 30
+  db:
+    image: amd64/mysql:8.0
+    ports:
+      - "3306:3306"
+    restart: always
+    healthcheck:
+      test: /etc/init.d/mysql status
+      interval: 1s
+      timeout: 3s
+      retries: 30
+    environment:
+      MYSQL_ROOT_PASSWORD: R77qmWdUx86udkR0zlmEZIxdFPrTz48a
+      MYSQL_DATABASE: billing
+      MYSQL_USER: app
+      MYSQL_PASSWORD: P4hVNvqRMlqr3tq9u6serFCEkA
+    volumes:
+      - "./data/mysql:/var/lib/mysql"
+      - "./init:/docker-entrypoint-initdb.d"
