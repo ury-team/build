@@ -48,6 +48,7 @@ services:
       MYSQL_DATABASE: billing
       MYSQL_USER: app
       MYSQL_PASSWORD: P4hVNvqRMlqr3tq9u6serFCEkA
+      TZ: Hongkong
     volumes:
       - "./data/mysql:/var/lib/mysql"
       - "./init:/docker-entrypoint-initdb.d"
