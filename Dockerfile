@@ -15,16 +15,14 @@ COPY ./client /app
 RUN sed -i 's/http:\/\/110.42.223.71:9527//g' /app/.env.production
 RUN sed -i 's/ws:\/\/110.42.223.71:9527\/api//g' /app/.env.production
 WORKDIR /app
-RUN npm i --registry=https://registry.npm.taobao.org
+RUN npm i --registry=https://registry.npm.taobao.org --legacy-peer-deps
 RUN npm run build:prod
 
 FROM maven:3.8-jdk-8 as build
 RUN mkdir -p /workspace
 WORKDIR /workspace
-
 # can remove
 # COPY ./.m2 /root/.m2/
-
 COPY ./server /workspace
 RUN mkdir -p /workspace/billing-api/src/main/resources/static
 COPY --from=client /app/dist /workspace/billing-api/src/main/resources/static
