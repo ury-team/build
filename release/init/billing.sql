@@ -391,7 +391,7 @@ CREATE TABLE `sys_user` (
                             `salt` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT '' COMMENT '盐加密',
                             `uuid` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT NULL,
                             `status` char(1) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT '0' COMMENT '帐号状态（0正常 1停用）',
-                            `del_flag` char(1) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT '1' COMMENT '删除标志（0代表存在 2代表删除）',
+                            `del_flag` varchar (30) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT '1' COMMENT '删除标志（0代表存在 2代表删除）',
                             `last_login_ip` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT '' COMMENT '最后登录IP',
                             `last_login_time` datetime DEFAULT NULL COMMENT '最后登录时间',
                             `pwd_update_date` datetime DEFAULT NULL COMMENT '密码最后更新时间',
@@ -460,7 +460,7 @@ CREATE TABLE `t_combo` (
                            `multiple` int(11) unsigned NOT NULL DEFAULT '1' COMMENT '倍数',
                            `price` int(11) NOT NULL DEFAULT '0' COMMENT '价格',
                            `sort` int(11) NOT NULL DEFAULT '0' COMMENT '排序',
-                           `del_flag` tinyint(2) NOT NULL DEFAULT '1',
+                           `del_flag` varchar (30) NOT NULL DEFAULT '1',
                            `remark` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL COMMENT '备注',
                            `create_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
                            `creator` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL COMMENT '创建人',
@@ -500,30 +500,31 @@ COMMIT;
 -- ----------------------------
 -- Table structure for t_main_frame
 -- ----------------------------
+
 DROP TABLE IF EXISTS `t_main_frame`;
 CREATE TABLE `t_main_frame` (
-                                `id` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+                                `id` varchar(20) NOT NULL,
                                 `name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL COMMENT '名称',
                                 `group_id` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL DEFAULT '1' COMMENT '分组ID',
-                                `ip` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
+                                `ip` varchar(255) DEFAULT NULL,
                                 `mac` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
-                                `gateway` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL COMMENT '网关',
+                                `gateway` varchar(255) DEFAULT NULL COMMENT '网关',
                                 `rental_status` tinyint(2) NOT NULL DEFAULT '0' COMMENT ' 0 未 1 锁定 2 使用',
                                 `connect_status` tinyint(2) NOT NULL DEFAULT '0' COMMENT ' 0 未 1 已',
                                 `fault_status` tinyint(2) NOT NULL DEFAULT '0' COMMENT ' 0 未 1 已',
-                                `fault_reason` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL COMMENT '故障原因',
-                                `first_dns` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
-                                `two_dns` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
-                                `subnet_mask` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
-                                `del_flag` tinyint(2) NOT NULL DEFAULT '1',
-                                `remark` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL COMMENT '备注',
+                                `fault_reason` varchar(255) DEFAULT NULL COMMENT '故障原因',
+                                `first_dns` varchar(255) DEFAULT NULL,
+                                `two_dns` varchar(255) DEFAULT NULL,
+                                `subnet_mask` varchar(255) DEFAULT NULL,
+                                `del_flag` varchar(30) NOT NULL DEFAULT '1',
+                                `remark` varchar(255) DEFAULT NULL COMMENT '备注',
                                 `create_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
-                                `creator` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL COMMENT '创建人',
+                                `creator` varchar(255) DEFAULT NULL COMMENT '创建人',
                                 `update_time` datetime DEFAULT NULL COMMENT '更新时间',
                                 `updater` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL COMMENT '更新人',
-                                PRIMARY KEY (`id`) USING BTREE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci ROW_FORMAT=DYNAMIC;
-
+                                PRIMARY KEY (`id`),
+                                UNIQUE KEY `mac_idx` (`mac`,`del_flag`) USING BTREE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 -- ----------------------------
 -- Records of t_main_frame
 -- ----------------------------
@@ -548,7 +549,7 @@ CREATE TABLE `t_main_frame_group` (
                                       `hdd` int(11) DEFAULT NULL COMMENT '机械硬盘',
                                       `up_bandwidth` int(11) DEFAULT NULL COMMENT '上行带宽',
                                       `down_bandwidth` int(11) DEFAULT NULL COMMENT '下行带宽',
-                                      `del_flag` tinyint(255) NOT NULL DEFAULT '1',
+                                      `del_flag` varchar (30) NOT NULL DEFAULT '1',
                                       `sort` int(11) NOT NULL DEFAULT '0',
                                       `remark` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL COMMENT '备注',
                                       `create_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
@@ -590,7 +591,7 @@ CREATE TABLE `t_main_frame_rental` (
                                        `is_history` tinyint(2) NOT NULL DEFAULT '0' COMMENT '0 正常 1 历史',
                                        `down_time` datetime DEFAULT NULL COMMENT '下机时间',
                                        `use_money` int(11) DEFAULT NULL COMMENT '使用金额',
-                                       `del_flag` tinyint(1) NOT NULL DEFAULT '1',
+                                       `del_flag` varchar (30) NOT NULL DEFAULT '1',
                                        `remark` varchar(255) DEFAULT NULL COMMENT '备注',
                                        `create_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
                                        `creator` varchar(255) DEFAULT NULL COMMENT '创建人',
@@ -635,7 +636,7 @@ CREATE TABLE `t_member` (
                             `certify_id` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL COMMENT '实名认证的ID，授权系统返回',
                             `version` int(11) NOT NULL DEFAULT '0' COMMENT '版本号',
                             `status` tinyint(2) NOT NULL DEFAULT '1' COMMENT '1 正常 0 禁用',
-                            `del_flag` tinyint(2) NOT NULL DEFAULT '1' COMMENT '逻辑删除 1 正常 0 删除',
+                            `del_flag` varchar (30) NOT NULL DEFAULT '1' COMMENT '逻辑删除 1 正常 0 删除',
                             `create_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
                             `creator` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL COMMENT '创建人',
                             `update_time` datetime DEFAULT NULL COMMENT '更新时间',
@@ -664,7 +665,7 @@ CREATE TABLE `t_member_level` (
                                   `discount` decimal(11,2) NOT NULL COMMENT '折扣',
                                   `remark` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL DEFAULT '1.0' COMMENT '备注',
                                   `sort` int(11) NOT NULL DEFAULT '0' COMMENT '排序',
-                                  `del_flag` tinyint(2) NOT NULL DEFAULT '1' COMMENT '逻辑删除 1 正常 0 删除',
+                                  `del_flag` varchar (30) NOT NULL DEFAULT '1' COMMENT '逻辑删除 1 正常 0 删除',
                                   `create_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
                                   `creator` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL COMMENT '创建人',
                                   `update_time` datetime DEFAULT NULL COMMENT '更新时间',
@@ -801,3 +802,4 @@ BEGIN;
 COMMIT;
 
 SET FOREIGN_KEY_CHECKS = 1;
+
