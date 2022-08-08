@@ -12,8 +12,8 @@ RUN apt-get update && apt-get install -y \
 RUN mkdir /app
 COPY ./client /app
 # remove api path
-RUN sed -i 's/http:\/\/\d+.\d+.\d+.\d+(:\d+)?//g' /app/.env.production
-RUN sed -i 's/ws:\/\/\d+.\d+.\d+.\d+(:\d+)?\/api//g' /app/.env.production
+RUN sed -i 's/http:\/\/[0-9]\+.[0-9]\+.[0-9]\+.[0-9]\+:[0-9]\+//g' /app/.env.production
+RUN sed -i 's/ws:\/\/[0-9]\+.[0-9]\+.[0-9]\+.[0-9]\+:[0-9]\+\/api//g' /app/.env.production
 WORKDIR /app
 RUN npm i --registry=https://registry.npm.taobao.org --legacy-peer-deps
 RUN npm run build:prod
