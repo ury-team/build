@@ -37,7 +37,7 @@ WORKDIR /app
 COPY --from=build /workspace/billing-api/target/billing-api-1.0-SNAPSHOT.jar /app/billing.jar
 COPY --from=build /workspace/billing-api/src/main/resources/license.txt /app/license.txt
 EXPOSE 1024
-ENTRYPOINT ["sh", "-c", "java -Dserver.port=1024 -Duser.timezone=Asia/Shanghai -Dspring.profiles.active=vol ${JAVA_OPTS} -jar /app/billing.jar"]
+ENTRYPOINT ["sh", "-c", "java -Dserver.port=1024 -Dauth.api.host=cert.bi-ling.com -Duser.timezone=Asia/Shanghai -Dspring.profiles.active=vol ${JAVA_OPTS} -jar /app/billing.jar"]
 
 FROM maven:3.8-jdk-8
 COPY --from=build-stage /app/billing.jar /
