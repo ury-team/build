@@ -1,5 +1,5 @@
 # client source
-FROM node:lts as client
+FROM node:16.10.0 as client
 RUN apt-get update && apt-get install -y \
         make \ 
         gcc \ 
