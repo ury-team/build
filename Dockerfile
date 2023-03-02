@@ -15,7 +15,7 @@ COPY ./client /app
 RUN sed -i 's/http:\/\/[0-9]\+.[0-9]\+.[0-9]\+.[0-9]\+:[0-9]\+//g' /app/.env.production
 RUN sed -i 's/ws:\/\/[0-9]\+.[0-9]\+.[0-9]\+.[0-9]\+:[0-9]\+\/api//g' /app/.env.production
 WORKDIR /app
-RUN npm i --registry=https://registry.npmmirror.com --legacy-peer-deps
+RUN npm i --registry=https://registry.npm.taobao.org --legacy-peer-deps
 RUN npm run build:prod
 
 FROM maven:3.8-jdk-8 as build
