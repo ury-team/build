@@ -727,9 +727,7 @@ CREATE TABLE `t_main_frame` (
 -- ----------------------------
 -- Records of t_main_frame
 -- ----------------------------
-BEGIN;
-INSERT INTO `t_main_frame` VALUES ('1631174472230793217', 'FOXB0B9', '1', '10.211.55.8', '00:1C:42:59:37:6E', '10.211.55.1', 0, 0, NULL, NULL, NULL, 0, '1.2.3', 0, '', '10.211.55.1', '0000000000000000', '255.255.255.0', '1', '', '2023-03-02 14:07:54', 'wy', NULL, 7, '2023-03-02 14:07:54', NULL, NULL, NULL);
-COMMIT;
+
 
 -- ----------------------------
 -- Table structure for t_main_frame_group
