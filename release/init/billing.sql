@@ -1,51 +1,9 @@
-/*
- Navicat Premium Data Transfer
 
- Source Server         : gdkj-001
- Source Server Type    : MySQL
- Source Server Version : 80018
- Source Host           : rm-bp19d4144l62kclo9io.mysql.rds.aliyuncs.com:3306
- Source Schema         : billing
-
- Target Server Type    : MySQL
- Target Server Version : 80018
- File Encoding         : 65001
-
- Date: 28/12/2021 17:31:56
-*/
 
 CREATE database if NOT EXISTS `billing` default character set utf8mb4 collate utf8mb4_unicode_ci;
 use `billing`;
-/*
- Navicat Premium Data Transfer
 
- Source Server         : gdkj-001
- Source Server Type    : MySQL
- Source Server Version : 80018
- Source Host           : rm-bp19d4144l62kclo9io.mysql.rds.aliyuncs.com:3306
- Source Schema         : billint-tmp
 
- Target Server Type    : MySQL
- Target Server Version : 80018
- File Encoding         : 65001
-
- Date: 31/12/2021 11:06:18
-*/
-/*
- Navicat Premium Data Transfer
-
- Source Server         : gdkj-001
- Source Server Type    : MySQL
- Source Server Version : 80018
- Source Host           : rm-bp19d4144l62kclo9io.mysql.rds.aliyuncs.com:3306
- Source Schema         : billing-t
-
- Target Server Type    : MySQL
- Target Server Version : 80018
- File Encoding         : 65001
-
- Date: 26/01/2022 14:56:13
-*/
 
 SET NAMES utf8mb4;
 SET FOREIGN_KEY_CHECKS = 0;
@@ -55,8 +13,8 @@ SET FOREIGN_KEY_CHECKS = 0;
 -- ----------------------------
 DROP TABLE IF EXISTS `sys_dict_data`;
 CREATE TABLE `sys_dict_data` (
-                                 `dict_code` bigint(20) NOT NULL AUTO_INCREMENT COMMENT '字典编码',
-                                 `dict_sort` int(4) DEFAULT '0' COMMENT '字典排序',
+                                 `dict_code` bigint NOT NULL AUTO_INCREMENT COMMENT '字典编码',
+                                 `dict_sort` int DEFAULT '0' COMMENT '字典排序',
                                  `dict_label` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT '' COMMENT '字典标签',
                                  `dict_value` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT '' COMMENT '字典键值',
                                  `dict_type` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT '' COMMENT '字典类型',
@@ -70,7 +28,7 @@ CREATE TABLE `sys_dict_data` (
                                  `update_time` datetime DEFAULT NULL COMMENT '更新时间',
                                  `remark` varchar(500) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL COMMENT '备注',
                                  PRIMARY KEY (`dict_code`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=100 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci ROW_FORMAT=DYNAMIC COMMENT='字典数据表';
+) ENGINE=InnoDB AUTO_INCREMENT=140 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci ROW_FORMAT=DYNAMIC COMMENT='字典数据表';
 
 -- ----------------------------
 -- Records of sys_dict_data
@@ -119,7 +77,7 @@ INSERT INTO `sys_dict_data` VALUES (58, 0, '其他', '0', 'member_source', NULL,
 INSERT INTO `sys_dict_data` VALUES (60, 1, '关机', '1', 'host_status', NULL, 'danger', 'N', '0', 'admin', '2021-09-22 02:59:31', 'admin', '2021-09-22 13:32:24', NULL);
 INSERT INTO `sys_dict_data` VALUES (61, 2, '待租', '2', 'host_status', NULL, 'warning', 'N', '0', 'admin', '2021-09-22 02:59:48', 'admin', '2021-09-22 13:32:32', NULL);
 INSERT INTO `sys_dict_data` VALUES (62, 4, '离线', '4', 'host_status', NULL, 'info', 'N', '0', 'admin', '2021-09-22 03:00:08', 'admin', '2021-10-13 20:44:52', NULL);
-INSERT INTO `sys_dict_data` VALUES (63, 5, '在线', '5', 'host_status', NULL, 'success', 'N', '0', 'admin', '2021-09-22 03:00:33', 'admin', '2021-10-13 20:44:45', NULL);
+INSERT INTO `sys_dict_data` VALUES (63, 5, '在线', '5', 'host_status', NULL, 'primary', 'N', '0', 'admin', '2021-09-22 03:00:33', 'admin', '2023-02-04 21:44:03', NULL);
 INSERT INTO `sys_dict_data` VALUES (64, 1, '线下付款', '1', 'pay_way', NULL, 'default', 'N', '0', 'admin', '2021-09-22 23:10:39', 'admin', '2021-10-18 14:30:53', NULL);
 INSERT INTO `sys_dict_data` VALUES (65, 2, '余额付款', '2', 'pay_way', NULL, 'default', 'N', '0', 'admin', '2021-09-22 23:10:48', '', NULL, NULL);
 INSERT INTO `sys_dict_data` VALUES (67, 3, '人脸识别', '2', 'member_isVerified', NULL, 'primary', 'N', '0', 'admin', '2021-09-23 15:40:18', 'admin', '2021-10-14 11:18:20', NULL);
@@ -151,6 +109,44 @@ INSERT INTO `sys_dict_data` VALUES (95, 0, '余额付款', '2', 'dealer_pay_way'
 INSERT INTO `sys_dict_data` VALUES (96, 1, '扫码支付', '3', 'dealer_pay_way', NULL, 'default', 'N', '0', 'admin', '2022-01-17 19:57:21', '', NULL, NULL);
 INSERT INTO `sys_dict_data` VALUES (98, 0, '已读', '1', 'message_status', NULL, 'default', 'N', '0', 'admin', '2022-01-23 18:27:54', '', NULL, NULL);
 INSERT INTO `sys_dict_data` VALUES (99, 1, '未读', '0', 'message_status', NULL, 'default', 'N', '0', 'admin', '2022-01-23 18:28:08', '', NULL, NULL);
+INSERT INTO `sys_dict_data` VALUES (101, 0, '经销商', '2', 'TRADE_PAY_WAY', NULL, 'default', 'N', '0', 'admin', '2022-02-27 14:23:47', 'admin', '2022-02-27 14:24:25', NULL);
+INSERT INTO `sys_dict_data` VALUES (102, 0, '主机出租', 'RENTAL', 'TRADE_TYPE', NULL, 'default', 'N', '0', 'admin', '2022-02-27 14:25:07', '', NULL, NULL);
+INSERT INTO `sys_dict_data` VALUES (103, 0, '线下', 'OFFLINE', 'pay_source', NULL, 'default', 'N', '0', 'admin', '2022-03-15 21:11:50', '', NULL, NULL);
+INSERT INTO `sys_dict_data` VALUES (104, 1, '余额', 'BALANCE', 'pay_source', NULL, 'default', 'N', '0', 'admin', '2022-03-15 21:12:07', '', NULL, NULL);
+INSERT INTO `sys_dict_data` VALUES (105, 2, '支付宝', 'ALIPAY', 'pay_source', NULL, 'default', 'N', '0', 'admin', '2022-03-15 21:12:24', '', NULL, NULL);
+INSERT INTO `sys_dict_data` VALUES (106, 0, '换机结余', 'CHANGE_RESIDUE', 'TRADE_TYPE', NULL, 'default', 'N', '0', 'admin', '2022-06-25 21:34:32', 'admin', '2022-06-26 13:17:37', NULL);
+INSERT INTO `sys_dict_data` VALUES (107, 0, '更改资费结余', 'CHANGE_COMBO_RESIDUE', 'TRADE_TYPE', NULL, 'default', 'N', '0', 'admin', '2022-06-26 13:17:59', 'admin', '2022-06-26 13:18:04', NULL);
+INSERT INTO `sys_dict_data` VALUES (108, 0, '换机', 'CHANGE', 'TRADE_TYPE', NULL, 'default', 'N', '0', 'admin', '2022-06-26 13:18:37', '', NULL, NULL);
+INSERT INTO `sys_dict_data` VALUES (110, 0, '自动续费', '3', 'TRADE_PAY_WAY', NULL, 'default', 'N', '0', 'admin', '2022-06-26 18:50:05', '', NULL, NULL);
+INSERT INTO `sys_dict_data` VALUES (111, 0, '账户充值', 'AMOUNT', 'amount_code', NULL, 'default', 'N', '0', 'admin', '2022-06-26 18:53:07', '', NULL, NULL);
+INSERT INTO `sys_dict_data` VALUES (112, 0, '账户支出', 'COST', 'amount_code', NULL, 'default', 'N', '0', 'admin', '2022-06-26 18:53:34', '', NULL, NULL);
+INSERT INTO `sys_dict_data` VALUES (113, 0, '账户押金', 'FREZONE', 'amount_code', NULL, 'default', 'N', '0', 'admin', '2022-06-26 18:53:48', '', NULL, NULL);
+INSERT INTO `sys_dict_data` VALUES (114, 0, '授信额度', 'CREDIT', 'amount_code', NULL, 'default', 'N', '0', 'admin', '2022-06-26 18:54:34', '', NULL, NULL);
+INSERT INTO `sys_dict_data` VALUES (115, 0, '用户充值', 'INCOMING', 'amount_code', NULL, 'default', 'N', '0', 'admin', '2022-06-26 18:54:45', '', NULL, NULL);
+INSERT INTO `sys_dict_data` VALUES (116, 0, '短信服务费', 'SMS', 'amount_code', NULL, 'default', 'N', '0', 'admin', '2022-06-26 18:55:00', '', NULL, NULL);
+INSERT INTO `sys_dict_data` VALUES (117, 0, '支付服务费', 'PAY', 'amount_code', NULL, 'default', 'N', '0', 'admin', '2022-06-26 18:55:11', '', NULL, NULL);
+INSERT INTO `sys_dict_data` VALUES (118, 0, '实名认证服务费', 'CERTIFY', 'amount_code', NULL, 'default', 'N', '0', 'admin', '2022-06-26 18:55:27', '', NULL, NULL);
+INSERT INTO `sys_dict_data` VALUES (119, 3, '系统认证', '3', 'member_isVerified', '3', 'primary', 'N', '0', 'admin', '2023-01-11 22:40:33', '', NULL, NULL);
+INSERT INTO `sys_dict_data` VALUES (120, 0, 'IPMI重装系统', 'IPMI_REINSTALL', 'batch_processing_scenario', NULL, 'default', 'N', '0', 'admin', '2023-02-05 17:38:18', 'admin', '2023-02-05 19:47:57', NULL);
+INSERT INTO `sys_dict_data` VALUES (121, 1, 'IPMI开机', 'IPMI_ON', 'batch_processing_scenario', NULL, 'default', 'N', '0', 'admin', '2023-02-05 17:38:51', 'admin', '2023-02-11 18:28:25', NULL);
+INSERT INTO `sys_dict_data` VALUES (122, 4, '待租', 'WAIT_RENTAL', 'batch_processing_scenario', NULL, 'default', 'N', '0', 'admin', '2023-02-05 17:39:03', 'admin', '2023-02-11 18:28:50', NULL);
+INSERT INTO `sys_dict_data` VALUES (123, 0, '重装系统', 'REINSTALL', 'directive_usage_scenario', NULL, 'default', 'N', '0', 'admin', '2023-02-05 17:55:42', '', NULL, NULL);
+INSERT INTO `sys_dict_data` VALUES (124, 0, '其它', 'OTHER', 'directive_usage_scenario', NULL, 'default', 'N', '0', 'admin', '2023-02-05 17:55:52', '', NULL, NULL);
+INSERT INTO `sys_dict_data` VALUES (125, 0, '下发中', '0', 'directive_status', NULL, 'default', 'N', '0', 'admin', '2023-02-05 17:57:25', '', NULL, NULL);
+INSERT INTO `sys_dict_data` VALUES (126, 1, '接收成功', '1', 'directive_status', NULL, 'default', 'N', '0', 'admin', '2023-02-05 17:57:41', '', NULL, NULL);
+INSERT INTO `sys_dict_data` VALUES (127, 2, '执行结束', '2', 'directive_status', NULL, 'default', 'N', '0', 'admin', '2023-02-05 17:57:54', '', NULL, NULL);
+INSERT INTO `sys_dict_data` VALUES (128, 0, '离线', '0', 'ipmi_connection_status', NULL, 'default', 'N', '0', 'admin', '2023-02-05 17:58:20', '', NULL, NULL);
+INSERT INTO `sys_dict_data` VALUES (129, 1, '在线', '1', 'ipmi_connection_status', NULL, 'default', 'N', '0', 'admin', '2023-02-05 17:58:29', '', NULL, NULL);
+INSERT INTO `sys_dict_data` VALUES (130, 0, '叠加', 'OVERLAY', 'upgrade_way', NULL, 'default', 'N', '0', 'admin', '2023-02-05 19:05:26', 'admin', '2023-02-05 19:49:11', NULL);
+INSERT INTO `sys_dict_data` VALUES (131, 1, '补差价', 'DIFFERENCE', 'upgrade_way', NULL, 'default', 'N', '0', 'admin', '2023-02-05 19:05:37', '', NULL, NULL);
+INSERT INTO `sys_dict_data` VALUES (132, 0, '叠加升级', 'OVERLAY_CHANGE_COMBO', 'TRADE_TYPE', NULL, 'default', 'N', '0', 'admin', '2023-02-06 13:43:58', '', NULL, NULL);
+INSERT INTO `sys_dict_data` VALUES (133, 2, 'IPMI关机', 'IPMI_OFF', 'batch_processing_scenario', NULL, 'default', 'N', '0', 'admin', '2023-02-11 18:27:07', 'admin', '2023-02-11 18:28:37', NULL);
+INSERT INTO `sys_dict_data` VALUES (134, 3, 'IPMI重置', 'IPMI_RESET', 'batch_processing_scenario', NULL, 'default', 'N', '0', 'admin', '2023-02-11 18:28:11', 'admin', '2023-02-11 18:28:44', NULL);
+INSERT INTO `sys_dict_data` VALUES (135, 6, '进入系统', 'BOOT_UP', 'batch_processing_scenario', '1', 'default', 'N', '0', 'admin', '2023-02-11 20:11:59', '', NULL, NULL);
+INSERT INTO `sys_dict_data` VALUES (136, 0, 'IP', 'IP', 'network_type', NULL, 'default', 'N', '0', 'admin', '2023-02-16 09:11:06', '', NULL, NULL);
+INSERT INTO `sys_dict_data` VALUES (137, 1, 'ADSL', 'ADSL', 'network_type', NULL, 'default', 'N', '0', 'admin', '2023-02-16 09:11:16', '', NULL, NULL);
+INSERT INTO `sys_dict_data` VALUES (138, 0, '退机退款', 'REFUND_SETTLEMENT', 'TRADE_TYPE', NULL, 'primary', 'N', '0', 'admin', '2023-02-27 10:11:21', '', NULL, NULL);
+INSERT INTO `sys_dict_data` VALUES (139, 1, '周', 'WEEK', 'combo_dateType', NULL, 'default', 'N', '0', 'admin', '2023-03-01 21:38:46', 'admin', '2023-03-01 21:42:56', NULL);
 COMMIT;
 
 -- ----------------------------
@@ -158,7 +154,7 @@ COMMIT;
 -- ----------------------------
 DROP TABLE IF EXISTS `sys_dict_type`;
 CREATE TABLE `sys_dict_type` (
-                                 `dict_id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT '字典主键',
+                                 `dict_id` bigint NOT NULL AUTO_INCREMENT COMMENT '字典主键',
                                  `dict_name` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT '' COMMENT '字典名称',
                                  `dict_type` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT '' COMMENT '字典类型',
                                  `status` char(1) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT '0' COMMENT '状态（0正常 1停用）',
@@ -169,7 +165,7 @@ CREATE TABLE `sys_dict_type` (
                                  `remark` varchar(500) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL COMMENT '备注',
                                  PRIMARY KEY (`dict_id`) USING BTREE,
                                  UNIQUE KEY `dict_type` (`dict_type`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=38 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci ROW_FORMAT=DYNAMIC COMMENT='字典类型表';
+) ENGINE=InnoDB AUTO_INCREMENT=46 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci ROW_FORMAT=DYNAMIC COMMENT='字典类型表';
 
 -- ----------------------------
 -- Records of sys_dict_type
@@ -200,6 +196,14 @@ INSERT INTO `sys_dict_type` VALUES (33, '订单支付方式', 'TRADE_PAY_WAY', '
 INSERT INTO `sys_dict_type` VALUES (34, '是否强制更新', 'force_update', '0', 'admin', '2021-11-29 23:07:42', 'admin', '2021-11-29 23:08:10', NULL);
 INSERT INTO `sys_dict_type` VALUES (36, '经销商付款方式', 'dealer_pay_way', '0', 'admin', '2022-01-17 19:56:41', '', NULL, NULL);
 INSERT INTO `sys_dict_type` VALUES (37, '消息状态', 'message_status', '0', 'admin', '2022-01-23 18:27:40', 'admin', '2022-01-23 18:30:46', NULL);
+INSERT INTO `sys_dict_type` VALUES (38, '支付来源', 'pay_source', '0', 'admin', '2022-03-15 21:11:20', '', NULL, NULL);
+INSERT INTO `sys_dict_type` VALUES (39, '费用编码', 'amount_code', '0', 'admin', '2022-06-26 18:52:44', '', NULL, NULL);
+INSERT INTO `sys_dict_type` VALUES (40, '指令状态', 'directive_status', '0', 'admin', '2023-02-05 17:09:22', '', NULL, NULL);
+INSERT INTO `sys_dict_type` VALUES (41, 'IPMI客户端连接状态', 'ipmi_connection_status', '0', 'admin', '2023-02-05 17:27:27', '', NULL, NULL);
+INSERT INTO `sys_dict_type` VALUES (42, '批处理触发场景', 'batch_processing_scenario', '0', 'admin', '2023-02-05 17:31:03', '', NULL, NULL);
+INSERT INTO `sys_dict_type` VALUES (43, '指令使用场景', 'directive_usage_scenario', '0', 'admin', '2023-02-05 17:55:23', '', NULL, NULL);
+INSERT INTO `sys_dict_type` VALUES (44, '主机升级方式', 'upgrade_way', '0', 'admin', '2023-02-05 19:05:09', '', NULL, NULL);
+INSERT INTO `sys_dict_type` VALUES (45, '网络类型', 'network_type', '0', 'admin', '2023-02-16 09:04:17', '', NULL, NULL);
 COMMIT;
 
 -- ----------------------------
@@ -210,7 +214,7 @@ CREATE TABLE `sys_menu` (
                             `menu_id` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL COMMENT '菜单ID',
                             `menu_name` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL COMMENT '菜单名称',
                             `parent_id` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT '0' COMMENT '父菜单ID',
-                            `order_num` int(11) DEFAULT '0' COMMENT '显示顺序',
+                            `order_num` int DEFAULT '0' COMMENT '显示顺序',
                             `path` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT '#' COMMENT '请求地址',
                             `target` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT '' COMMENT '打开方式（menuItem页签 menuBlank新窗口）',
                             `menu_type` char(1) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT '' COMMENT '菜单类型（M目录 C菜单 F按钮）',
@@ -298,7 +302,7 @@ INSERT INTO `sys_menu` VALUES ('1440324245367427072', '充值', '143438996033254
 INSERT INTO `sys_menu` VALUES ('1440557256797196288', '积分换算规则', '1436985171164401664', 5, '#', '', 'F', '0', '1', '1', 'center:level:config', '#', NULL, '', '2021-09-22 14:03:08', 'admin', '2021-12-13 05:12:08', '');
 INSERT INTO `sys_menu` VALUES ('1448260849427943424', '交易记录', '1434389828174221312', 3, 'record', '', 'C', '1', '1', '1', 'center:record:list', 'money', 'center/record/index', '', '2021-10-13 20:14:28', 'admin', '2021-12-13 05:13:17', '');
 INSERT INTO `sys_menu` VALUES ('1448496753916645376', '出租记录', '1370200363281551360', 6, 'history', '', 'C', '1', '1', '1', 'equipment:history:list', 'documentation', 'equipment/history', '', '2021-10-14 11:51:52', 'admin', '2021-12-19 20:23:15', '');
-INSERT INTO `sys_menu` VALUES ('1465331350583250944', '客户端升级', '1370200363281551360', 4, 'version', '', 'C', '1', '1', '1', 'equipment:version:list', 'job', 'equipment/version/index', '', '2021-11-29 22:46:33', 'admin', '2021-12-14 15:55:25', '');
+INSERT INTO `sys_menu` VALUES ('1465331350583250944', '客户端升级', '1370200363281551360', 4, 'version', '', 'C', '0', '1', '1', 'equipment:version:list', 'job', 'equipment/version/index', '', '2021-11-29 22:46:33', 'admin', '2023-02-01 16:49:32', '');
 INSERT INTO `sys_menu` VALUES ('1465349010578608128', '新增', '1465331350583250944', 1, '#', '', 'F', '0', '1', '1', 'equipment:version:create', '#', NULL, '', '2021-11-29 23:56:43', 'admin', '2021-11-29 23:58:27', '');
 INSERT INTO `sys_menu` VALUES ('1465349120452595712', '修改', '1465331350583250944', 2, '#', '', 'F', '0', '1', '1', 'equipment:version:update', '#', NULL, '', '2021-11-29 23:57:09', 'admin', '2021-11-29 23:58:23', '');
 INSERT INTO `sys_menu` VALUES ('1465349378557480960', '列表', '1465331350583250944', 0, '#', '', 'F', '0', '1', '1', 'equipment:version:query', '#', NULL, '', '2021-11-29 23:58:11', '', NULL, '');
@@ -328,6 +332,30 @@ INSERT INTO `sys_menu` VALUES ('1479121604314271744', '参数导出', '147912101
 INSERT INTO `sys_menu` VALUES ('1485193826262978560', '消息列表', '1434389828174221312', 4, 'message', '', 'C', '1', '1', '1', 'center:message:list', 'email2', 'center/message/index', '', '2022-01-23 18:12:56', 'admin', '2022-01-23 18:13:18', '');
 INSERT INTO `sys_menu` VALUES ('1485194056656097280', '列表', '1485193826262978560', 0, '#', '', 'F', '1', '1', '1', 'center:message:query', '#', NULL, '', '2022-01-23 18:13:51', '', NULL, '');
 INSERT INTO `sys_menu` VALUES ('1485194170594365440', '已读', '1485193826262978560', 1, '#', '', 'F', '1', '1', '1', 'center:message:read', '#', NULL, '', '2022-01-23 18:14:18', '', NULL, '');
+INSERT INTO `sys_menu` VALUES ('1538065621483393024', '添加积分', '1434389960332546048', 7, '#', '', 'F', '1', '1', '1', 'center:member:addIntegral', '#', NULL, '', '2022-06-18 15:46:34', '', NULL, '');
+INSERT INTO `sys_menu` VALUES ('1538066254085099520', '确认支付', '1448260849427943424', 1, '#', '', 'F', '1', '1', '1', 'center:record:pay', '#', NULL, '', '2022-06-18 15:49:05', '', NULL, '');
+INSERT INTO `sys_menu` VALUES ('1540979340110598144', '消费记录', '1434389828174221312', 8, 'consumptionRecord', '', 'C', '1', '1', '1', 'center:tradeRecord:consumptionRecord', 'list', 'center/consumption-record/index', '', '2022-06-26 16:44:39', '', NULL, '');
+INSERT INTO `sys_menu` VALUES ('1541084385128878080', '授权管理', '1356212749667012608', 0, 'authorize', '', 'C', '1', '1', '1', 'center:authorize:list', 'lock', 'center/authorize/index', '', '2022-06-26 23:42:04', 'admin', '2022-06-26 23:43:50', '');
+INSERT INTO `sys_menu` VALUES ('1555206739744395264', '配置截屏', '1370201842667098112', 13, '#', '', 'F', '1', '1', '1', 'equipment:home:setscreenshot', '#', NULL, '', '2022-08-04 22:59:15', '', NULL, '');
+INSERT INTO `sys_menu` VALUES ('1591049306113183744', '已实名', '1434389960332546048', 8, '#', '', 'F', '1', '1', '1', 'center:member:verified', '#', NULL, '', '2022-11-11 20:44:49', '', NULL, '');
+INSERT INTO `sys_menu` VALUES ('1612981016635510784', '远程', '1370201842667098112', 14, '#', '', 'F', '1', '1', '1', 'equipment:home:remote', '#', NULL, '', '2023-01-11 09:13:36', '', NULL, '');
+INSERT INTO `sys_menu` VALUES ('1612981125515448320', '远程配置', '1370201842667098112', 15, '#', '', 'F', '1', '1', '1', 'equipment:home:remoteConfig', '#', NULL, '', '2023-01-11 09:14:02', '', NULL, '');
+INSERT INTO `sys_menu` VALUES ('1613179010576158720', '维护', '1370201842667098112', 16, '#', '', 'F', '1', '1', '1', 'equipment:home:maintenance', '#', NULL, '', '2023-01-11 22:20:22', 'admin', '2023-01-11 22:22:34', '');
+INSERT INTO `sys_menu` VALUES ('1613179172186886144', '终端', '1370201842667098112', 18, '#', '', 'F', '1', '1', '1', 'equipment:home:cmd', '#', NULL, '', '2023-01-11 22:21:00', '', NULL, '');
+INSERT INTO `sys_menu` VALUES ('1613179839936860160', '批处理', '1436972592278933504', 5, '#', '', 'F', '1', '1', '1', 'equipment:grouping:batch', '#', NULL, '', '2023-01-11 22:23:39', '', NULL, '');
+INSERT INTO `sys_menu` VALUES ('1615157205902954496', 'IPMI管理客户端', '1370200363281551360', 9, 'ipmi', '', 'C', '1', '1', '1', '', 'date', 'equipment/ipmi/index', '', '2023-01-17 09:21:00', 'admin', '2023-01-19 19:34:58', '');
+INSERT INTO `sys_menu` VALUES ('1615157631490592768', '镜像管理', '1370200363281551360', 8, 'image', '', 'C', '1', '1', '1', '', 'redis', 'equipment/image/index', '', '2023-01-17 09:22:42', 'admin', '2023-01-19 19:27:31', '');
+INSERT INTO `sys_menu` VALUES ('1616034168469327872', '客户端版本', '1370200363281551360', 7, 'client', '', 'C', '1', '1', '1', '', 'druid', 'equipment/client/index', '', '2023-01-19 19:25:44', 'admin', '2023-02-01 16:49:40', '');
+INSERT INTO `sys_menu` VALUES ('1616160241211281408', '指令记录', '1356212749667012608', 7, 'directive', '', 'C', '1', '1', '1', NULL, 'list', 'sys/directive/index', '', '2023-01-20 03:46:43', '', NULL, '');
+INSERT INTO `sys_menu` VALUES ('1622170855301844992', '指令配置', '1370200363281551360', 10, 'directive', '', 'C', '1', '1', '1', NULL, 'list', 'equipment/directive/index', '', '2023-02-05 17:50:45', '', NULL, '');
+INSERT INTO `sys_menu` VALUES ('1622254097610706944', 'q', '1495364271008256000', 3, '#', '', 'M', '0', '1', '1', NULL, '#', NULL, '', '2023-02-05 23:21:31', '', NULL, '');
+INSERT INTO `sys_menu` VALUES ('1624309214677700608', '通知配置', '1370200363281551360', 11, 'notify-config', '', 'C', '1', '1', '1', NULL, 'guide', 'equipment/notify-config/index', '', '2023-02-11 15:27:49', '', NULL, '');
+INSERT INTO `sys_menu` VALUES ('1625904715860676608', '网络配置', '1370200363281551360', 12, 'network', '', 'C', '1', '1', '1', NULL, 'international', 'equipment/network/index', '', '2023-02-16 01:07:46', '', NULL, '');
+INSERT INTO `sys_menu` VALUES ('1626638376952270848', '绑定客户端', '1436972592278933504', 6, '#', '', 'F', '1', '1', '1', 'equipment:grouping:client', '#', NULL, '', '2023-02-18 01:43:05', '', NULL, '');
+INSERT INTO `sys_menu` VALUES ('1626638435794161664', '绑定镜像', '1436972592278933504', 7, '#', '', 'F', '1', '1', '1', 'equipment:grouping:mirror', '#', NULL, '', '2023-02-18 01:43:19', '', NULL, '');
+INSERT INTO `sys_menu` VALUES ('1626638491297386496', '绑定网络配置', '1436972592278933504', 8, '#', '', 'F', '1', '1', '1', 'equipment:grouping:network', '#', NULL, '', '2023-02-18 01:43:32', '', NULL, '');
+INSERT INTO `sys_menu` VALUES ('1626638611749408768', '接管名称', '1436972592278933504', 9, '#', '', 'F', '1', '1', '1', 'equipment:grouping:isControl', '#', NULL, '', '2023-02-18 01:44:01', '', NULL, '');
+INSERT INTO `sys_menu` VALUES ('1629923092912541696', '退机退款', '1370201842667098112', 19, '#', '', 'F', '1', '1', '1', 'equipment:home:refundSettlement', '#', NULL, '', '2023-02-27 03:15:22', '', NULL, '');
 COMMIT;
 
 -- ----------------------------
@@ -335,13 +363,13 @@ COMMIT;
 -- ----------------------------
 DROP TABLE IF EXISTS `sys_oper_log`;
 CREATE TABLE `sys_oper_log` (
-                                `oper_id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT '日志主键',
+                                `oper_id` bigint NOT NULL AUTO_INCREMENT COMMENT '日志主键',
                                 `title` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT '' COMMENT '模块标题',
                                 `content` varchar(1000) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
-                                `business_type` int(2) DEFAULT '0' COMMENT '业务类型（0其它 1新增 2修改 3删除）',
+                                `business_type` int DEFAULT '0' COMMENT '业务类型（0其它 1新增 2修改 3删除）',
                                 `method` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT '' COMMENT '方法名称',
                                 `request_method` varchar(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT '' COMMENT '请求方式',
-                                `operator_type` int(1) DEFAULT '0' COMMENT '操作类别（0其它 1后台用户 2手机端用户）',
+                                `operator_type` int DEFAULT '0' COMMENT '操作类别（0其它 1后台用户 2手机端用户）',
                                 `oper_name` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT '' COMMENT '操作人员',
                                 `dept_name` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT '' COMMENT '部门名称',
                                 `oper_url` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT '' COMMENT '请求URL',
@@ -349,21 +377,27 @@ CREATE TABLE `sys_oper_log` (
                                 `oper_location` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT '' COMMENT '操作地点',
                                 `oper_param` varchar(2000) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT '' COMMENT '请求参数',
                                 `json_result` varchar(2000) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT '' COMMENT '返回参数',
-                                `status` int(1) DEFAULT '0' COMMENT '操作状态（0正常 1异常）',
+                                `status` int DEFAULT '0' COMMENT '操作状态（0正常 1异常）',
                                 `error_msg` varchar(2000) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT '' COMMENT '错误消息',
                                 `oper_time` datetime DEFAULT NULL COMMENT '操作时间',
                                 PRIMARY KEY (`oper_id`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=1773 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci ROW_FORMAT=DYNAMIC COMMENT='操作日志记录';
+) ENGINE=InnoDB AUTO_INCREMENT=2735 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci ROW_FORMAT=DYNAMIC COMMENT='操作日志记录';
+
+-- ----------------------------
+-- Records of sys_oper_log
+-- ----------------------------
+BEGIN;
+COMMIT;
 
 -- ----------------------------
 -- Table structure for sys_role
 -- ----------------------------
 DROP TABLE IF EXISTS `sys_role`;
 CREATE TABLE `sys_role` (
-                            `role_id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT '角色ID',
+                            `role_id` bigint NOT NULL AUTO_INCREMENT COMMENT '角色ID',
                             `role_name` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL COMMENT '角色名称',
                             `role_key` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL DEFAULT '' COMMENT '角色权限字符串',
-                            `role_sort` int(11) NOT NULL COMMENT '显示顺序',
+                            `role_sort` int NOT NULL COMMENT '显示顺序',
                             `data_scope` char(1) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT '1' COMMENT '数据范围（1：全部数据权限 2：自定数据权限 3：本部门数据权限 4：本部门及以下数据权限）',
                             `status` char(1) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL COMMENT '角色状态（0正常 1停用）',
                             `del_flag` char(1) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT '1' COMMENT '删除标志（0代表存在 2代表删除）',
@@ -373,7 +407,7 @@ CREATE TABLE `sys_role` (
                             `update_time` datetime DEFAULT NULL COMMENT '更新时间',
                             `remark` varchar(500) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT NULL COMMENT '备注',
                             PRIMARY KEY (`role_id`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=1477546636329750529 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin ROW_FORMAT=DYNAMIC COMMENT='角色信息表';
+) ENGINE=InnoDB AUTO_INCREMENT=1583322994170793985 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin ROW_FORMAT=DYNAMIC COMMENT='角色信息表';
 
 -- ----------------------------
 -- Records of sys_role
@@ -387,7 +421,7 @@ COMMIT;
 -- ----------------------------
 DROP TABLE IF EXISTS `sys_role_menu`;
 CREATE TABLE `sys_role_menu` (
-                                 `role_id` bigint(20) NOT NULL COMMENT '角色ID',
+                                 `role_id` bigint NOT NULL COMMENT '角色ID',
                                  `menu_id` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL COMMENT '菜单ID',
                                  PRIMARY KEY (`role_id`,`menu_id`) USING BTREE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin ROW_FORMAT=DYNAMIC COMMENT='角色和菜单关联表';
@@ -395,14 +429,16 @@ CREATE TABLE `sys_role_menu` (
 -- ----------------------------
 -- Records of sys_role_menu
 -- ----------------------------
+BEGIN;
+COMMIT;
 
 -- ----------------------------
 -- Table structure for sys_user
 -- ----------------------------
 DROP TABLE IF EXISTS `sys_user`;
 CREATE TABLE `sys_user` (
-                            `id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT '用户ID',
-                            `dept_id` bigint(20) DEFAULT NULL COMMENT '部门ID',
+                            `id` bigint NOT NULL AUTO_INCREMENT COMMENT '用户ID',
+                            `dept_id` bigint DEFAULT NULL COMMENT '部门ID',
                             `username` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT '' COMMENT '用户昵称',
                             `user_type` varchar(2) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT '00' COMMENT '用户类型（00系统用户 01注册用户）',
                             `email` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT '' COMMENT '用户邮箱',
@@ -423,13 +459,13 @@ CREATE TABLE `sys_user` (
                             `update_time` datetime DEFAULT NULL COMMENT '更新时间',
                             `remark` varchar(500) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT NULL COMMENT '备注',
                             PRIMARY KEY (`id`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=1482667791751364611 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin ROW_FORMAT=DYNAMIC COMMENT='用户信息表';
+) ENGINE=InnoDB AUTO_INCREMENT=1583322699134971907 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin ROW_FORMAT=DYNAMIC COMMENT='用户信息表';
 
 -- ----------------------------
 -- Records of sys_user
 -- ----------------------------
 BEGIN;
-INSERT INTO `sys_user` VALUES (1, NULL, 'admin', '00', '', '13002518187', '0', '', '21232f297a57a5a743894a0e4a801fc3', '', 'c9867b6d-46ee-494f-bab2-a5df164a798e', '1', '1', '116.52.140.3', '2022-01-26 10:04:26', NULL, '', '2021-09-05 15:21:33', '', NULL, NULL);
+INSERT INTO `sys_user` VALUES (1, NULL, 'admin', '00', '', '13002518187', '0', '', 'e10adc3949ba59abbe56e057f20f883e', '', 'a04801fb-74ab-4671-9a22-7845b2e8c597', '1', '1', '218.94.129.215', '2023-03-02 13:54:49', NULL, '', '2021-09-05 15:21:33', '', '2022-07-19 16:32:48', NULL);
 COMMIT;
 
 -- ----------------------------
@@ -437,8 +473,8 @@ COMMIT;
 -- ----------------------------
 DROP TABLE IF EXISTS `sys_user_role`;
 CREATE TABLE `sys_user_role` (
-                                 `user_id` bigint(20) NOT NULL COMMENT '用户ID',
-                                 `role_id` bigint(20) NOT NULL COMMENT '角色ID',
+                                 `user_id` bigint NOT NULL COMMENT '用户ID',
+                                 `role_id` bigint NOT NULL COMMENT '角色ID',
                                  PRIMARY KEY (`user_id`,`role_id`) USING BTREE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin ROW_FORMAT=DYNAMIC COMMENT='用户和角色关联表';
 
@@ -447,6 +483,27 @@ CREATE TABLE `sys_user_role` (
 -- ----------------------------
 BEGIN;
 INSERT INTO `sys_user_role` VALUES (1, 1);
+INSERT INTO `sys_user_role` VALUES (1583322699134971906, 1583322994170793984);
+COMMIT;
+
+-- ----------------------------
+-- Table structure for t_cmd_group
+-- ----------------------------
+DROP TABLE IF EXISTS `t_cmd_group`;
+CREATE TABLE `t_cmd_group` (
+                               `id` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL,
+                               `cmd_info` json NOT NULL COMMENT '指令组',
+                               `name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL COMMENT '指令名称',
+                               `use_scene` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL COMMENT '重装系统、其它',
+                               `remark` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL COMMENT '备注',
+                               `create_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+                               PRIMARY KEY (`id`) USING BTREE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin ROW_FORMAT=DYNAMIC;
+
+-- ----------------------------
+-- Records of t_cmd_group
+-- ----------------------------
+BEGIN;
 COMMIT;
 
 -- ----------------------------
@@ -455,18 +512,32 @@ COMMIT;
 DROP TABLE IF EXISTS `t_cmd_log`;
 CREATE TABLE `t_cmd_log` (
                              `id` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+                             `client_type` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL DEFAULT 'BILLING_CLIENT' COMMENT '客户端类型  BILLING_CLIENT',
                              `type` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL COMMENT '指令类型',
-                             `status` tinyint(2) NOT NULL DEFAULT '0' COMMENT '指令状态 0 下发中 1 完成',
+                             `status` tinyint NOT NULL DEFAULT '0' COMMENT '指令状态 0 下发中 1 完成',
+                             `exec_result` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL COMMENT '执行结果',
+                             `exec_time` datetime DEFAULT NULL COMMENT '执行时间',
+                             `exec_status` tinyint DEFAULT NULL COMMENT '执行状态',
                              `mac` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL COMMENT 'MAC地址',
                              `param` varchar(6000) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL COMMENT '指令参数',
                              `job_id` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL COMMENT '任务ID',
                              `create_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+                             `update_time` timestamp NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间',
                              PRIMARY KEY (`id`) USING BTREE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci ROW_FORMAT=DYNAMIC;
 
 -- ----------------------------
 -- Records of t_cmd_log
 -- ----------------------------
+BEGIN;
+INSERT INTO `t_cmd_log` VALUES ('1631174476735475714', 'BILLING_CLIENT', 'CONFIG_INFO', 1, NULL, NULL, NULL, '00:1C:42:59:37:6E', '{\"payload\":{},\"type\":\"READ\"}', '8f036fc9-f09d-46f7-8637-d63ded65aafc', '2023-03-02 14:07:55', '2023-03-02 14:10:00');
+INSERT INTO `t_cmd_log` VALUES ('1631174476752252929', 'BILLING_CLIENT', 'INIT', 1, NULL, NULL, NULL, '00:1C:42:59:37:6E', '{\"machine\":{\"dns\":\"10.211.55.1\",\"ip\":\"10.211.55.8\",\"name\":\"FOXB0B9\",\"newX\":false,\"rental\":false},\"md5\":{\"jar\":\"fa7d593254e4e18975e3e53bb392514e\"},\"url\":{}}', 'ab014755-41a9-447d-9dab-74dd3f2f57ec', '2023-03-02 14:07:55', '2023-03-02 14:07:55');
+INSERT INTO `t_cmd_log` VALUES ('1631174496754888705', 'BILLING_CLIENT', 'INIT', 1, NULL, NULL, NULL, '00:1C:42:59:37:6E', '{\"machine\":{\"dns\":\"10.211.55.1\",\"ip\":\"10.211.55.8\",\"name\":\"FOXB0B9\",\"newX\":false,\"rental\":false},\"md5\":{\"jar\":\"fa7d593254e4e18975e3e53bb392514e\"},\"url\":{}}', 'a7705a61-7ab1-4ab8-8b0c-2c798ee4b710', '2023-03-02 14:08:00', '2023-03-02 14:10:00');
+INSERT INTO `t_cmd_log` VALUES ('1631174496754888706', 'BILLING_CLIENT', 'CONFIG_INFO', 1, NULL, NULL, NULL, '00:1C:42:59:37:6E', '{\"payload\":{},\"type\":\"READ\"}', 'a819d02a-0667-4f53-bc5e-a2081f98488d', '2023-03-02 14:08:00', '2023-03-02 14:10:00');
+INSERT INTO `t_cmd_log` VALUES ('1631174501939048450', 'BILLING_CLIENT', 'INIT', 1, NULL, NULL, NULL, '00:1C:42:59:37:6E', '{\"machine\":{\"dns\":\"10.211.55.1\",\"ip\":\"10.211.55.8\",\"name\":\"FOXB0B9\",\"newX\":false,\"rental\":false},\"md5\":{\"jar\":\"fa7d593254e4e18975e3e53bb392514e\"},\"url\":{}}', '696225ed-7666-4fe9-aab7-f7e53b261481', '2023-03-02 14:08:01', '2023-03-02 14:08:01');
+INSERT INTO `t_cmd_log` VALUES ('1631174501943242754', 'BILLING_CLIENT', 'CONFIG_INFO', 1, NULL, NULL, NULL, '00:1C:42:59:37:6E', '{\"payload\":{},\"type\":\"READ\"}', 'd265ab11-5cc2-45fc-a8ba-485a5b055c23', '2023-03-02 14:08:01', '2023-03-02 14:10:00');
+COMMIT;
+
 -- ----------------------------
 -- Table structure for t_combo
 -- ----------------------------
@@ -476,9 +547,9 @@ CREATE TABLE `t_combo` (
                            `name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL COMMENT '名称',
                            `date_type` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL COMMENT '日期类型',
                            `group_id` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL COMMENT '分组ID',
-                           `multiple` int(11) unsigned NOT NULL DEFAULT '1' COMMENT '倍数',
-                           `price` int(11) NOT NULL DEFAULT '0' COMMENT '价格',
-                           `sort` int(11) NOT NULL DEFAULT '0' COMMENT '排序',
+                           `multiple` int unsigned NOT NULL DEFAULT '1' COMMENT '倍数',
+                           `price` int NOT NULL DEFAULT '0' COMMENT '价格',
+                           `sort` int NOT NULL DEFAULT '0' COMMENT '排序',
                            `del_flag` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL DEFAULT '1',
                            `remark` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL COMMENT '备注',
                            `create_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
@@ -489,6 +560,11 @@ CREATE TABLE `t_combo` (
                            UNIQUE KEY `idx_` (`date_type`,`group_id`,`del_flag`,`multiple`) USING BTREE COMMENT '唯一索引'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci ROW_FORMAT=DYNAMIC;
 
+-- ----------------------------
+-- Records of t_combo
+-- ----------------------------
+BEGIN;
+COMMIT;
 
 -- ----------------------------
 -- Table structure for t_custom_field
@@ -497,7 +573,7 @@ DROP TABLE IF EXISTS `t_custom_field`;
 CREATE TABLE `t_custom_field` (
                                   `id` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
                                   `Is_default` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL DEFAULT '0' COMMENT '是否默认',
-                                  `type` tinyint(2) NOT NULL DEFAULT '1' COMMENT '1 出租页面',
+                                  `type` tinyint NOT NULL DEFAULT '1' COMMENT '1 出租页面',
                                   `fields` json NOT NULL COMMENT '字段',
                                   `creator` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL COMMENT '创建人',
                                   `create_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
@@ -508,7 +584,107 @@ CREATE TABLE `t_custom_field` (
 -- Records of t_custom_field
 -- ----------------------------
 BEGIN;
-INSERT INTO `t_custom_field` VALUES ('1476921712833495042', '0', 1, '[\"{\\\"children\\\":[],\\\"key\\\":\\\"status\\\",\\\"desc\\\":\\\"状态\\\",\\\"status\\\":\\\"1\\\"}\", \"{\\\"children\\\":[],\\\"key\\\":\\\"groupName\\\",\\\"desc\\\":\\\"分区\\\",\\\"status\\\":\\\"1\\\"}\", \"{\\\"children\\\":[],\\\"key\\\":\\\"name\\\",\\\"desc\\\":\\\"计算机名\\\",\\\"status\\\":\\\"1\\\"}\", \"{\\\"children\\\":[],\\\"key\\\":\\\"ip\\\",\\\"desc\\\":\\\"ip地址\\\",\\\"status\\\":\\\"1\\\"}\", \"{\\\"children\\\":[],\\\"key\\\":\\\"mac\\\",\\\"desc\\\":\\\"MAC地址\\\",\\\"status\\\":\\\"1\\\"}\", \"{\\\"children\\\":[],\\\"key\\\":\\\"rentalTime\\\",\\\"desc\\\":\\\"出租时间\\\",\\\"status\\\":\\\"1\\\"}\", \"{\\\"children\\\":[],\\\"key\\\":\\\"bootUpTime\\\",\\\"desc\\\":\\\"上机时间\\\",\\\"status\\\":\\\"1\\\"}\", \"{\\\"children\\\":[],\\\"key\\\":\\\"endTime\\\",\\\"desc\\\":\\\"到期时间\\\",\\\"status\\\":\\\"1\\\"}\", \"{\\\"children\\\":[],\\\"key\\\":\\\"useTimeLong\\\",\\\"desc\\\":\\\"使用时长\\\",\\\"status\\\":\\\"1\\\"}\", \"{\\\"children\\\":[],\\\"key\\\":\\\"quantity\\\",\\\"desc\\\":\\\"数量\\\",\\\"status\\\":\\\"1\\\"}\", \"{\\\"children\\\":[],\\\"key\\\":\\\"discountPrice\\\",\\\"desc\\\":\\\"折扣价格\\\",\\\"status\\\":\\\"1\\\"}\", \"{\\\"children\\\":[],\\\"key\\\":\\\"payMoney\\\",\\\"desc\\\":\\\"实际付款\\\",\\\"status\\\":\\\"1\\\"}\", \"{\\\"children\\\":[],\\\"key\\\":\\\"giveMoney\\\",\\\"desc\\\":\\\"本机赠送\\\",\\\"status\\\":\\\"1\\\"}\", \"{\\\"children\\\":[],\\\"key\\\":\\\"memberName\\\",\\\"desc\\\":\\\"用户名\\\",\\\"status\\\":\\\"1\\\"}\", \"{\\\"children\\\":[],\\\"key\\\":\\\"discount\\\",\\\"desc\\\":\\\"折扣\\\",\\\"status\\\":\\\"1\\\"}\", \"{\\\"children\\\":[],\\\"key\\\":\\\"balanceMoney\\\",\\\"desc\\\":\\\"余额\\\",\\\"status\\\":\\\"1\\\"}\", \"{\\\"children\\\":[],\\\"key\\\":\\\"dateType\\\",\\\"desc\\\":\\\"套餐\\\",\\\"status\\\":\\\"1\\\"}\", \"{\\\"children\\\":[],\\\"key\\\":\\\"price\\\",\\\"desc\\\":\\\"价格\\\",\\\"status\\\":\\\"1\\\"}\", \"{\\\"children\\\":[],\\\"key\\\":\\\"gateway\\\",\\\"desc\\\":\\\"网关\\\",\\\"status\\\":\\\"1\\\"}\", \"{\\\"children\\\":[],\\\"key\\\":\\\"memberLevelName\\\",\\\"desc\\\":\\\"会员等级\\\",\\\"status\\\":\\\"1\\\"}\", \"{\\\"children\\\":[],\\\"key\\\":\\\"remark\\\",\\\"desc\\\":\\\"备注\\\",\\\"status\\\":\\\"1\\\"}\"]', 'admin', '2021-12-31 22:22:30');
+INSERT INTO `t_custom_field` VALUES ('1476921712833495042', '1', 1, '[\"{\\\"children\\\":[],\\\"key\\\":\\\"status\\\",\\\"desc\\\":\\\"状态\\\",\\\"status\\\":\\\"1\\\"}\", \"{\\\"children\\\":[],\\\"key\\\":\\\"groupName\\\",\\\"desc\\\":\\\"分区\\\",\\\"status\\\":\\\"1\\\"}\", \"{\\\"children\\\":[],\\\"key\\\":\\\"name\\\",\\\"desc\\\":\\\"计算机名\\\",\\\"status\\\":\\\"1\\\"}\", \"{\\\"children\\\":[],\\\"key\\\":\\\"ip\\\",\\\"desc\\\":\\\"ip地址\\\",\\\"status\\\":\\\"1\\\"}\", \"{\\\"children\\\":[],\\\"key\\\":\\\"mac\\\",\\\"desc\\\":\\\"MAC地址\\\",\\\"status\\\":\\\"1\\\"}\", \"{\\\"children\\\":[],\\\"key\\\":\\\"rentalTime\\\",\\\"desc\\\":\\\"出租时间\\\",\\\"status\\\":\\\"1\\\"}\", \"{\\\"children\\\":[],\\\"key\\\":\\\"bootUpTime\\\",\\\"desc\\\":\\\"上机时间\\\",\\\"status\\\":\\\"1\\\"}\", \"{\\\"children\\\":[],\\\"key\\\":\\\"endTime\\\",\\\"desc\\\":\\\"到期时间\\\",\\\"status\\\":\\\"1\\\"}\", \"{\\\"children\\\":[],\\\"key\\\":\\\"useTimeLong\\\",\\\"desc\\\":\\\"使用时长\\\",\\\"status\\\":\\\"1\\\"}\", \"{\\\"children\\\":[],\\\"key\\\":\\\"quantity\\\",\\\"desc\\\":\\\"数量\\\",\\\"status\\\":\\\"1\\\"}\", \"{\\\"children\\\":[],\\\"key\\\":\\\"discountPrice\\\",\\\"desc\\\":\\\"折扣价格\\\",\\\"status\\\":\\\"1\\\"}\", \"{\\\"children\\\":[],\\\"key\\\":\\\"payMoney\\\",\\\"desc\\\":\\\"实际付款\\\",\\\"status\\\":\\\"1\\\"}\", \"{\\\"children\\\":[],\\\"key\\\":\\\"giveMoney\\\",\\\"desc\\\":\\\"本机赠送\\\",\\\"status\\\":\\\"1\\\"}\", \"{\\\"children\\\":[],\\\"key\\\":\\\"memberName\\\",\\\"desc\\\":\\\"用户名\\\",\\\"status\\\":\\\"1\\\"}\", \"{\\\"children\\\":[],\\\"key\\\":\\\"clientVersion\\\",\\\"desc\\\":\\\"客户端版本\\\",\\\"status\\\":\\\"1\\\"}\", \"{\\\"children\\\":[],\\\"key\\\":\\\"discount\\\",\\\"desc\\\":\\\"折扣\\\",\\\"status\\\":\\\"1\\\"}\", \"{\\\"children\\\":[],\\\"key\\\":\\\"balanceMoney\\\",\\\"desc\\\":\\\"余额\\\",\\\"status\\\":\\\"1\\\"}\", \"{\\\"children\\\":[],\\\"key\\\":\\\"dateType\\\",\\\"desc\\\":\\\"套餐\\\",\\\"status\\\":\\\"1\\\"}\", \"{\\\"children\\\":[],\\\"key\\\":\\\"price\\\",\\\"desc\\\":\\\"价格\\\",\\\"status\\\":\\\"1\\\"}\", \"{\\\"children\\\":[],\\\"key\\\":\\\"gateway\\\",\\\"desc\\\":\\\"网关\\\",\\\"status\\\":\\\"1\\\"}\", \"{\\\"children\\\":[],\\\"key\\\":\\\"memberLevelName\\\",\\\"desc\\\":\\\"会员等级\\\",\\\"status\\\":\\\"1\\\"}\", \"{\\\"children\\\":[],\\\"key\\\":\\\"remark\\\",\\\"desc\\\":\\\"备注\\\",\\\"status\\\":\\\"1\\\"}\", \"{\\\"children\\\":[],\\\"key\\\":\\\"rentalUserName\\\",\\\"desc\\\":\\\"出租员\\\",\\\"status\\\":\\\"1\\\"}\", \"{\\\"children\\\":[],\\\"key\\\":\\\"registrationTime\\\",\\\"desc\\\":\\\"开户时间\\\",\\\"status\\\":\\\"1\\\"}\"]', '', '2021-12-31 22:22:30');
+COMMIT;
+
+-- ----------------------------
+-- Table structure for t_download_manage
+-- ----------------------------
+DROP TABLE IF EXISTS `t_download_manage`;
+CREATE TABLE `t_download_manage` (
+                                     `id` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+                                     `resource_type` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL COMMENT '资源类型',
+                                     `protocol` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL COMMENT '协议',
+                                     `account` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL COMMENT '帐号',
+                                     `password` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL COMMENT '密码',
+                                     `download_url` varchar(600) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL COMMENT '下载地址',
+                                     `description` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL COMMENT '描述',
+                                     PRIMARY KEY (`id`) USING BTREE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci ROW_FORMAT=DYNAMIC COMMENT='客户端管理';
+
+-- ----------------------------
+-- Records of t_download_manage
+-- ----------------------------
+BEGIN;
+COMMIT;
+
+-- ----------------------------
+-- Table structure for t_group_batch_cmd
+-- ----------------------------
+DROP TABLE IF EXISTS `t_group_batch_cmd`;
+CREATE TABLE `t_group_batch_cmd` (
+                                     `id` bigint NOT NULL,
+                                     `scene_type` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL COMMENT '场景 参考枚举',
+                                     `power_status` tinyint DEFAULT '0' COMMENT '电源状态',
+                                     `connect_status` tinyint DEFAULT '0' COMMENT '系统状态',
+                                     `exec_cmd_end` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL COMMENT '执行指令端',
+                                     `group_id` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL COMMENT '分组ID',
+                                     `delay` int NOT NULL DEFAULT '0' COMMENT '延时时间',
+                                     `cmd_id` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL COMMENT '对应指令配置ID',
+                                     `create_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '保存时间',
+                                     `creator` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL COMMENT '创建人',
+                                     `update_time` timestamp NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间',
+                                     PRIMARY KEY (`id`) USING BTREE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci ROW_FORMAT=DYNAMIC COMMENT='分组cmd';
+
+-- ----------------------------
+-- Records of t_group_batch_cmd
+-- ----------------------------
+BEGIN;
+COMMIT;
+
+-- ----------------------------
+-- Table structure for t_group_download
+-- ----------------------------
+DROP TABLE IF EXISTS `t_group_download`;
+CREATE TABLE `t_group_download` (
+                                    `group_id` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL COMMENT '分组ID',
+                                    `download_id` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL COMMENT '下载管理ID',
+                                    `is_default` tinyint(1) NOT NULL DEFAULT '0' COMMENT '是否默认 0 不是 1 是',
+                                    `sys_disk_size` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL DEFAULT '0' COMMENT '磁盘大小',
+                                    `resource_type` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+                                    PRIMARY KEY (`group_id`,`download_id`) USING BTREE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci ROW_FORMAT=DYNAMIC COMMENT='分组cmd';
+
+-- ----------------------------
+-- Records of t_group_download
+-- ----------------------------
+BEGIN;
+COMMIT;
+
+-- ----------------------------
+-- Table structure for t_group_network
+-- ----------------------------
+DROP TABLE IF EXISTS `t_group_network`;
+CREATE TABLE `t_group_network` (
+                                   `group_id` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL COMMENT '分组ID',
+                                   `network_id` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL COMMENT '网络配置ID',
+                                   `is_default` tinyint(1) NOT NULL DEFAULT '0' COMMENT '是否默认 0 不是 1 是',
+                                   PRIMARY KEY (`group_id`,`network_id`) USING BTREE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci ROW_FORMAT=DYNAMIC COMMENT='分组网络配置';
+
+-- ----------------------------
+-- Records of t_group_network
+-- ----------------------------
+BEGIN;
+COMMIT;
+
+-- ----------------------------
+-- Table structure for t_license
+-- ----------------------------
+DROP TABLE IF EXISTS `t_license`;
+CREATE TABLE `t_license` (
+                             `id` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+                             `decode_key` varchar(600) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL COMMENT '解密key',
+                             `license` text CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci COMMENT '授权文件',
+                             `update_time` datetime DEFAULT NULL COMMENT '更新时间',
+                             PRIMARY KEY (`id`) USING BTREE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci ROW_FORMAT=DYNAMIC;
+
+-- ----------------------------
+-- Records of t_license
+-- ----------------------------
+BEGIN;
 COMMIT;
 
 -- ----------------------------
@@ -522,15 +698,24 @@ CREATE TABLE `t_main_frame` (
                                 `ip` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
                                 `mac` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
                                 `gateway` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL COMMENT '网关',
-                                `rental_status` tinyint(2) NOT NULL DEFAULT '0' COMMENT ' 0 未 1 锁定 2 使用',
-                                `connect_status` tinyint(2) NOT NULL DEFAULT '0' COMMENT ' 0 未 1 已',
-                                `fault_status` tinyint(2) NOT NULL DEFAULT '0' COMMENT ' 0 未 1 已',
+                                `rental_status` tinyint NOT NULL DEFAULT '0' COMMENT ' 0 未 1 锁定 2 使用',
+                                `connect_status` tinyint NOT NULL DEFAULT '0' COMMENT ' 0 未 1 已',
+                                `ipmi` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL COMMENT 'ipmi地址',
+                                `ipmi_account` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL COMMENT 'ipmi账户',
+                                `ipmi_password` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL COMMENT 'ipmi密码',
+                                `power_status` tinyint NOT NULL DEFAULT '0' COMMENT '0 关闭 1 开启',
+                                `client_version` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL COMMENT '当前客户端版本',
+                                `fault_status` tinyint NOT NULL DEFAULT '0' COMMENT ' 0 未 1 已',
                                 `fault_reason` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL COMMENT '故障原因',
                                 `first_dns` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
                                 `two_dns` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
-                                `subnet_mask` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
+                                `subnet_mask` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL COMMENT '子网掩码',
                                 `del_flag` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL DEFAULT '1',
                                 `remark` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL COMMENT '备注',
+                                `settlement_time` datetime DEFAULT CURRENT_TIMESTAMP COMMENT '结算时间',
+                                `last_username` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL COMMENT '最后一次使用人',
+                                `last_rental_remark` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL COMMENT '最后一次出租备注',
+                                `version` int NOT NULL DEFAULT '0' COMMENT '乐观锁',
                                 `create_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
                                 `creator` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL COMMENT '创建人',
                                 `update_time` datetime DEFAULT NULL COMMENT '更新时间',
@@ -539,6 +724,12 @@ CREATE TABLE `t_main_frame` (
                                 UNIQUE KEY `mac_idx` (`mac`,`del_flag`) USING BTREE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci ROW_FORMAT=DYNAMIC;
 
+-- ----------------------------
+-- Records of t_main_frame
+-- ----------------------------
+BEGIN;
+INSERT INTO `t_main_frame` VALUES ('1631174472230793217', 'FOXB0B9', '1', '10.211.55.8', '00:1C:42:59:37:6E', '10.211.55.1', 0, 0, NULL, NULL, NULL, 0, '1.2.3', 0, '', '10.211.55.1', '0000000000000000', '255.255.255.0', '1', '', '2023-03-02 14:07:54', 'wy', NULL, 7, '2023-03-02 14:07:54', NULL, NULL, NULL);
+COMMIT;
 
 -- ----------------------------
 -- Table structure for t_main_frame_group
@@ -548,18 +739,19 @@ CREATE TABLE `t_main_frame_group` (
                                       `id` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
                                       `name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL COMMENT '名称',
                                       `cpu` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL COMMENT 'cpu',
-                                      `kernel_num` int(11) DEFAULT NULL COMMENT '内核',
-                                      `thread_num` int(11) DEFAULT NULL COMMENT '线程数',
+                                      `kernel_num` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL COMMENT '内核',
+                                      `thread_num` varchar(11) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL COMMENT '线程数',
                                       `main_frequency` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL COMMENT '主频',
-                                      `memory` int(11) DEFAULT NULL COMMENT '内存 G',
+                                      `memory` varchar(11) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL COMMENT '内存 G',
                                       `graphics_card` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL COMMENT '显卡',
-                                      `video_memory` int(255) DEFAULT NULL COMMENT '显存 G',
-                                      `ssd` int(11) DEFAULT NULL COMMENT '固态硬盘',
-                                      `hdd` int(11) DEFAULT NULL COMMENT '机械硬盘',
-                                      `up_bandwidth` int(11) DEFAULT NULL COMMENT '上行带宽',
-                                      `down_bandwidth` int(11) DEFAULT NULL COMMENT '下行带宽',
+                                      `video_memory` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL COMMENT '显存 G',
+                                      `ssd` varchar(11) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL COMMENT '固态硬盘',
+                                      `hdd` varchar(11) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL COMMENT '机械硬盘',
+                                      `up_bandwidth` varchar(11) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL COMMENT '上行带宽',
+                                      `down_bandwidth` varchar(11) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL COMMENT '下行带宽',
                                       `del_flag` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL DEFAULT '1',
-                                      `sort` int(11) NOT NULL DEFAULT '0',
+                                      `sort` int NOT NULL DEFAULT '0',
+                                      `is_control` tinyint NOT NULL DEFAULT '0' COMMENT ' 是否接管 0 不接管 1 接管',
                                       `remark` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL COMMENT '备注',
                                       `create_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
                                       `creator` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL COMMENT '创建人',
@@ -572,7 +764,43 @@ CREATE TABLE `t_main_frame_group` (
 -- Records of t_main_frame_group
 -- ----------------------------
 BEGIN;
-INSERT INTO `t_main_frame_group` VALUES ('1', '默认分组', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '1', 0, NULL, '2021-10-14 19:17:58', NULL, NULL, NULL);
+COMMIT;
+
+-- ----------------------------
+-- Table structure for t_main_frame_network
+-- ----------------------------
+DROP TABLE IF EXISTS `t_main_frame_network`;
+CREATE TABLE `t_main_frame_network` (
+                                        `main_frame_id` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL COMMENT '主机ID',
+                                        `network_id` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL COMMENT '网络配置ID',
+                                        PRIMARY KEY (`main_frame_id`,`network_id`) USING BTREE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci ROW_FORMAT=DYNAMIC COMMENT='主机网络设置';
+
+-- ----------------------------
+-- Records of t_main_frame_network
+-- ----------------------------
+BEGIN;
+COMMIT;
+
+-- ----------------------------
+-- Table structure for t_main_frame_remote
+-- ----------------------------
+DROP TABLE IF EXISTS `t_main_frame_remote`;
+CREATE TABLE `t_main_frame_remote` (
+                                       `id` bigint NOT NULL,
+                                       `main_frame_id` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL COMMENT '主机ID',
+                                       `remote_model` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL DEFAULT '0' COMMENT '远程方式 LLK ',
+                                       `id_code` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL COMMENT '识别码',
+                                       `verify_code` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL COMMENT '验证码',
+                                       `create_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '上报时间',
+                                       `update_time` timestamp NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间',
+                                       PRIMARY KEY (`id`) USING BTREE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci ROW_FORMAT=DYNAMIC COMMENT='远程方式';
+
+-- ----------------------------
+-- Records of t_main_frame_remote
+-- ----------------------------
+BEGIN;
 COMMIT;
 
 -- ----------------------------
@@ -581,26 +809,27 @@ COMMIT;
 DROP TABLE IF EXISTS `t_main_frame_rental`;
 CREATE TABLE `t_main_frame_rental` (
                                        `id` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
-                                       `orderly_id` int(11) NOT NULL AUTO_INCREMENT,
+                                       `orderly_id` int NOT NULL AUTO_INCREMENT,
+                                       `auto_renewal` tinyint NOT NULL DEFAULT '2' COMMENT '自动续费 0 关闭 1开启 2 未设置',
                                        `main_frame_id` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL COMMENT '主机ID',
                                        `trade_record_id` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL COMMENT '订单ID',
                                        `member_id` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL COMMENT '帐号ID',
-                                       `multiple` int(11) DEFAULT NULL COMMENT '倍数',
+                                       `multiple` int DEFAULT NULL COMMENT '倍数',
                                        `date_type` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL COMMENT '套餐类型',
-                                       `price` int(11) NOT NULL COMMENT '价格 /分',
+                                       `price` int NOT NULL COMMENT '价格 /分',
                                        `discount` decimal(11,2) NOT NULL DEFAULT '1.00' COMMENT '折扣',
-                                       `discount_price` int(11) NOT NULL DEFAULT '0' COMMENT '折扣完需要支付的价格',
+                                       `discount_price` int NOT NULL DEFAULT '0' COMMENT '折扣完需要支付的价格',
                                        `boot_up_time` datetime DEFAULT NULL COMMENT '上机时间',
                                        `end_time` datetime DEFAULT NULL COMMENT '到期时间',
                                        `last_billing_time` datetime DEFAULT NULL COMMENT '上一次结算时间',
-                                       `pay_way` tinyint(2) NOT NULL COMMENT '付款方式 1 线下付款 2余额付款 3 混合',
-                                       `pay_money` int(11) NOT NULL COMMENT '支付金额',
-                                       `give_money` int(11) NOT NULL DEFAULT '0' COMMENT '赠送金额',
-                                       `quantity` int(1) NOT NULL DEFAULT '1' COMMENT '数量',
-                                       `status` tinyint(2) NOT NULL DEFAULT '1' COMMENT '1 上机 2 退机 3 换机 4 到期',
-                                       `is_history` tinyint(2) NOT NULL DEFAULT '0' COMMENT '0 正常 1 历史',
+                                       `pay_way` tinyint NOT NULL COMMENT '付款方式 1 线下付款 2余额付款 3 混合',
+                                       `pay_money` int NOT NULL COMMENT '支付金额',
+                                       `give_money` int NOT NULL DEFAULT '0' COMMENT '赠送金额',
+                                       `quantity` int NOT NULL DEFAULT '1' COMMENT '数量',
+                                       `status` tinyint NOT NULL DEFAULT '1' COMMENT '1 上机 2 退机 3 换机 4 到期',
+                                       `is_history` tinyint NOT NULL DEFAULT '0' COMMENT '0 正常 1 历史',
                                        `down_time` datetime DEFAULT NULL COMMENT '下机时间',
-                                       `use_money` int(11) DEFAULT NULL COMMENT '使用金额',
+                                       `use_money` int DEFAULT NULL COMMENT '使用金额',
                                        `del_flag` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL DEFAULT '1',
                                        `remark` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL COMMENT '备注',
                                        `create_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
@@ -609,8 +838,52 @@ CREATE TABLE `t_main_frame_rental` (
                                        `updater` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL COMMENT '更新人',
                                        PRIMARY KEY (`id`) USING BTREE,
                                        UNIQUE KEY `orderly_id` (`orderly_id`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=668 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci ROW_FORMAT=DYNAMIC;
+) ENGINE=InnoDB AUTO_INCREMENT=966 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci ROW_FORMAT=DYNAMIC;
 
+-- ----------------------------
+-- Records of t_main_frame_rental
+-- ----------------------------
+BEGIN;
+COMMIT;
+
+-- ----------------------------
+-- Table structure for t_manage_client
+-- ----------------------------
+DROP TABLE IF EXISTS `t_manage_client`;
+CREATE TABLE `t_manage_client` (
+                                   `id` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+                                   `client_ip` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL COMMENT '客户端ip',
+                                   `access_token` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL COMMENT '连接标识',
+                                   `name` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL COMMENT '名称',
+                                   `connect_status` tinyint NOT NULL DEFAULT '0' COMMENT '0 离线 1 在线 连接状态',
+                                   `remark` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL COMMENT '备注',
+                                   `create_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+                                   `creator` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL COMMENT '创建人',
+                                   `update_time` datetime DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间',
+                                   PRIMARY KEY (`id`) USING BTREE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci ROW_FORMAT=DYNAMIC COMMENT='管理客户端';
+
+-- ----------------------------
+-- Records of t_manage_client
+-- ----------------------------
+BEGIN;
+COMMIT;
+
+-- ----------------------------
+-- Table structure for t_manage_client_group
+-- ----------------------------
+DROP TABLE IF EXISTS `t_manage_client_group`;
+CREATE TABLE `t_manage_client_group` (
+                                         `group_id` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL COMMENT '分组',
+                                         `manage_client_id` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL COMMENT '客户端id',
+                                         PRIMARY KEY (`group_id`,`manage_client_id`) USING BTREE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci ROW_FORMAT=DYNAMIC COMMENT='管理客户端分组';
+
+-- ----------------------------
+-- Records of t_manage_client_group
+-- ----------------------------
+BEGIN;
+COMMIT;
 
 -- ----------------------------
 -- Table structure for t_member
@@ -624,25 +897,26 @@ CREATE TABLE `t_member` (
                             `id_number` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL COMMENT '证件编号',
                             `phone_number` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL COMMENT '手机号',
                             `email` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL COMMENT '邮箱',
-                            `recharge_way` tinyint(2) NOT NULL DEFAULT '0' COMMENT '充值方式 0 客服 1 自助',
-                            `recharge_money` int(11) NOT NULL DEFAULT '0' COMMENT '充值金额',
-                            `withdraw_money` int(11) NOT NULL DEFAULT '0' COMMENT '提现金额',
-                            `give_money` int(11) NOT NULL DEFAULT '0' COMMENT '赠送金额',
-                            `consumption_money` int(11) NOT NULL DEFAULT '0' COMMENT '消费金额',
-                            `balance_money` int(11) NOT NULL DEFAULT '0' COMMENT '余额',
-                            `level` tinyint(2) NOT NULL DEFAULT '0' COMMENT '会员等级',
-                            `integral` int(11) NOT NULL DEFAULT '0' COMMENT '积分',
-                            `discount_type` tinyint(2) NOT NULL DEFAULT '1' COMMENT '折扣类型 1 正常 2 自定义',
+                            `recharge_way` tinyint NOT NULL DEFAULT '0' COMMENT '充值方式 0 客服 1 自助',
+                            `auto_renewal` tinyint NOT NULL DEFAULT '1' COMMENT '自动续费 0 关闭 1开启',
+                            `recharge_money` int NOT NULL DEFAULT '0' COMMENT '充值金额',
+                            `withdraw_money` int NOT NULL DEFAULT '0' COMMENT '提现金额',
+                            `give_money` int NOT NULL DEFAULT '0' COMMENT '赠送金额',
+                            `consumption_money` int NOT NULL DEFAULT '0' COMMENT '消费金额',
+                            `balance_money` int NOT NULL DEFAULT '0' COMMENT '余额',
+                            `level` tinyint NOT NULL DEFAULT '0' COMMENT '会员等级',
+                            `integral` int NOT NULL DEFAULT '0' COMMENT '积分',
+                            `discount_type` tinyint NOT NULL DEFAULT '1' COMMENT '折扣类型 1 正常 2 自定义',
                             `discount` decimal(11,2) NOT NULL DEFAULT '1.00' COMMENT '折扣',
                             `qq` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL COMMENT 'qq',
                             `wx` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL COMMENT '微信',
-                            `is_verified` tinyint(2) NOT NULL DEFAULT '0' COMMENT ' 是否实名认证 0 未 1 手机 2 身份证',
+                            `is_verified` tinyint NOT NULL DEFAULT '0' COMMENT ' 是否实名认证 0 未 1 手机 2 身份证',
                             `verified_time` datetime DEFAULT NULL COMMENT '实名认证的时间',
-                            `is_read_user_agreement` tinyint(2) NOT NULL DEFAULT '0' COMMENT '是否阅读用户协议0 未 1 有',
-                            `init` tinyint(2) NOT NULL DEFAULT '0' COMMENT '是否初始化数据 0 不是 1 是',
+                            `is_read_user_agreement` tinyint NOT NULL DEFAULT '0' COMMENT '是否阅读用户协议0 未 1 有',
+                            `init` tinyint NOT NULL DEFAULT '0' COMMENT '是否初始化数据 0 不是 1 是',
                             `certify_id` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL COMMENT '实名认证的ID，授权系统返回',
-                            `version` int(11) NOT NULL DEFAULT '0' COMMENT '版本号',
-                            `status` tinyint(2) NOT NULL DEFAULT '1' COMMENT '1 正常 0 禁用',
+                            `version` int NOT NULL DEFAULT '0' COMMENT '版本号',
+                            `status` tinyint NOT NULL DEFAULT '1' COMMENT '1 正常 0 禁用',
                             `del_flag` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL DEFAULT '1' COMMENT '逻辑删除 1 正常 0 删除',
                             `create_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
                             `creator` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL COMMENT '创建人',
@@ -652,6 +926,11 @@ CREATE TABLE `t_member` (
                             PRIMARY KEY (`id`) USING BTREE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci ROW_FORMAT=DYNAMIC;
 
+-- ----------------------------
+-- Records of t_member
+-- ----------------------------
+BEGIN;
+COMMIT;
 
 -- ----------------------------
 -- Table structure for t_member_level
@@ -661,12 +940,12 @@ CREATE TABLE `t_member_level` (
                                   `id` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
                                   `name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL COMMENT '名称',
                                   `status` tinyint(1) NOT NULL COMMENT ' 0 停用 1 启用',
-                                  `level` tinyint(2) NOT NULL DEFAULT '1' COMMENT '会员等级',
-                                  `integral_min` int(11) NOT NULL DEFAULT '0' COMMENT '积分小值',
-                                  `integral_max` int(11) NOT NULL DEFAULT '0' COMMENT '积分',
+                                  `level` tinyint NOT NULL DEFAULT '1' COMMENT '会员等级',
+                                  `integral_min` int NOT NULL DEFAULT '0' COMMENT '积分小值',
+                                  `integral_max` int NOT NULL DEFAULT '0' COMMENT '积分',
                                   `discount` decimal(11,2) NOT NULL COMMENT '折扣',
                                   `remark` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL DEFAULT '1.0' COMMENT '备注',
-                                  `sort` int(11) NOT NULL DEFAULT '0' COMMENT '排序',
+                                  `sort` int NOT NULL DEFAULT '0' COMMENT '排序',
                                   `del_flag` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL DEFAULT '1' COMMENT '逻辑删除 1 正常 0 删除',
                                   `create_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
                                   `creator` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL COMMENT '创建人',
@@ -686,17 +965,118 @@ COMMIT;
 -- ----------------------------
 DROP TABLE IF EXISTS `t_message`;
 CREATE TABLE `t_message` (
-                             `id` bigint(20) NOT NULL,
-                             `is_read` tinyint(2) NOT NULL DEFAULT '0' COMMENT ' 0 未读 1 已读',
+                             `id` bigint NOT NULL,
+                             `is_read` tinyint NOT NULL DEFAULT '0' COMMENT ' 0 未读 1 已读',
                              `type` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL COMMENT 'OPERATION',
                              `title` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL COMMENT '消息标题',
-                             `source` tinyint(2) NOT NULL DEFAULT '1' COMMENT '来源 1 操作主机记录 2 客户端系统回调',
+                             `source` tinyint NOT NULL DEFAULT '1' COMMENT '来源 1 操作主机记录 2 客户端系统回调',
                              `content` varchar(300) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL COMMENT '消息内容',
-                             `url` varchar(500) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL COMMENT '跳转url',
+                             `url` varchar(500) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT '' COMMENT '跳转url',
                              `create_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '消息时间',
                              `data` varchar(6000) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL COMMENT '结构化数据',
+                             `creator` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL COMMENT '创建人',
                              PRIMARY KEY (`id`) USING BTREE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci ROW_FORMAT=DYNAMIC;
+
+-- ----------------------------
+-- Records of t_message
+-- ----------------------------
+BEGIN;
+INSERT INTO `t_message` VALUES (1631174536688857090, 0, 'AUTH_MESSAGE', '登录退出', 3, '检测到此帐号有多个客户端登录，本客户端退出。', 'http://yauth.ifcode.cn/', '2023-03-02 14:08:10', NULL, NULL);
+COMMIT;
+
+-- ----------------------------
+-- Table structure for t_network_config
+-- ----------------------------
+DROP TABLE IF EXISTS `t_network_config`;
+CREATE TABLE `t_network_config` (
+                                    `id` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL,
+                                    `type` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL COMMENT '类型',
+                                    `name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL COMMENT '名称',
+                                    `gateway` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT NULL COMMENT '网关',
+                                    `subnet_mask` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT NULL COMMENT '子网掩码',
+                                    `main_dns` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL COMMENT '主DNS',
+                                    `secondary_dns` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL COMMENT '辅DNS',
+                                    `account` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT NULL COMMENT '帐号',
+                                    `password` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT NULL COMMENT '密码',
+                                    `status` tinyint NOT NULL DEFAULT '0' COMMENT ' 0 禁用 1 启用',
+                                    `remark` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL COMMENT '备注 介绍',
+                                    `create_time` datetime DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+                                    `creator` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL COMMENT '创建人',
+                                    PRIMARY KEY (`id`) USING BTREE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin ROW_FORMAT=DYNAMIC COMMENT='网络配置';
+
+-- ----------------------------
+-- Records of t_network_config
+-- ----------------------------
+BEGIN;
+COMMIT;
+
+-- ----------------------------
+-- Table structure for t_notify
+-- ----------------------------
+DROP TABLE IF EXISTS `t_notify`;
+CREATE TABLE `t_notify` (
+                            `id` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL,
+                            `notify_scene` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL COMMENT '通知场景',
+                            `notify_begin` int NOT NULL COMMENT '通知开始时间',
+                            `notify_unit` varchar(25) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL COMMENT '单位，时间枚举',
+                            `listener_range` int NOT NULL COMMENT '监听范围结束 ',
+                            `listener_unit` varchar(25) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL COMMENT '监听范围单位',
+                            `notify_end` int NOT NULL COMMENT '通知结束时间',
+                            `create_time` datetime DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+                            PRIMARY KEY (`id`) USING BTREE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin ROW_FORMAT=DYNAMIC;
+
+-- ----------------------------
+-- Records of t_notify
+-- ----------------------------
+BEGIN;
+COMMIT;
+
+-- ----------------------------
+-- Table structure for t_notify_record
+-- ----------------------------
+DROP TABLE IF EXISTS `t_notify_record`;
+CREATE TABLE `t_notify_record` (
+                                   `id` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL,
+                                   `member_id` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT NULL COMMENT '用户ID',
+                                   `phone` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT NULL COMMENT '发送手机号',
+                                   `main_frame_id` json DEFAULT NULL COMMENT '关联主机',
+                                   `notify_range` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT NULL COMMENT '通知范围',
+                                   `status` tinyint DEFAULT '1',
+                                   `param` varchar(500) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT NULL COMMENT '通知参数',
+                                   `is_valid` tinyint DEFAULT '0' COMMENT '是否有效 0 否 1 是',
+                                   `biz_id` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT NULL,
+                                   `create_time` datetime DEFAULT CURRENT_TIMESTAMP COMMENT '通知时间',
+                                   PRIMARY KEY (`id`) USING BTREE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin ROW_FORMAT=DYNAMIC;
+
+-- ----------------------------
+-- Records of t_notify_record
+-- ----------------------------
+BEGIN;
+COMMIT;
+
+-- ----------------------------
+-- Table structure for t_snapshot_record
+-- ----------------------------
+DROP TABLE IF EXISTS `t_snapshot_record`;
+CREATE TABLE `t_snapshot_record` (
+                                     `id` bigint NOT NULL AUTO_INCREMENT COMMENT '主键',
+                                     `main_frame_id` varchar(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL COMMENT '主机ID',
+                                     `oss_path` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL COMMENT '图片路径',
+                                     `type` tinyint NOT NULL DEFAULT '1' COMMENT '1  自动截图 2 手动截图',
+                                     `create_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '创建时间',
+                                     PRIMARY KEY (`id`) USING BTREE,
+                                     KEY `index_id` (`main_frame_id`) USING BTREE
+) ENGINE=InnoDB AUTO_INCREMENT=1629038159524323330 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci ROW_FORMAT=DYNAMIC COMMENT='图片上报数据表';
+
+-- ----------------------------
+-- Records of t_snapshot_record
+-- ----------------------------
+BEGIN;
+COMMIT;
 
 -- ----------------------------
 -- Table structure for t_sys_config
@@ -715,9 +1095,14 @@ CREATE TABLE `t_sys_config` (
 -- Records of t_sys_config
 -- ----------------------------
 BEGIN;
+INSERT INTO `t_sys_config` VALUES ('1', NULL, NULL, 'SNAPSHOT_CONFIG', '{\"interval\":100,\"quality\":60,\"status\":1}');
+INSERT INTO `t_sys_config` VALUES ('12345', '对象存储', NULL, 'CLOUD_STORAGE_CONFIG_KEY', '{\n	\"type\": 1,\n	\"endpoint\": \"http://101.34.36.64:9000/\",\n	\"accessKeyId\": \"admin\",\n	\"accessKeySecret\": \"siqikeji\",\n	  \"bucketName\":\"billing\"\n}');
 INSERT INTO `t_sys_config` VALUES ('1437720200302112770', '积分换算规则', NULL, 'MEMBER_INTEGRAL', '10');
-INSERT INTO `t_sys_config` VALUES ('1440552118439141378', NULL, NULL, 'RENTAL_FIELD', '[{\"key\":\"\",\n\"desc\":\"设备信息\",\n\"status\":\"1\",\n\"children\":[\n{\"key\":\"\",\n\"desc\":\"计算机信息\",\n\"status\":\"1\",\n\"children\":[\n{\"key\":\"name\",\n\"desc\":\"计算机名\",\n\"status\":\"1\",\n\"children\":[]},\n\n{\"key\":\"ip\",\n\"desc\":\"ip地址\",\n\"status\":\"1\",\n\"children\":[]},\n\n{\"key\":\"subnetMask\",\n\"desc\":\"子网掩码\",\n\"status\":\"1\",\n\"children\":[]},\n\n{\"key\":\"gateway\",\n\"desc\":\"网关\",\n\"status\":\"1\",\n\"children\":[]},\n\n{\"key\":\"firstDns\",\n\"desc\":\"首选DNS\",\n\"status\":\"1\",\n\"children\":[]},\n\n{\"key\":\"twoDns\",\n\"desc\":\"备选DNS\",\n\"status\":\"1\",\n\"children\":[]}]},\n\n{\"key\":\"\",\n\"desc\":\"硬件信息\",\n\"status\":\"1\",\n\"children\":[\n{\"key\":\"mac\",\n\"desc\":\"MAC地址\",\n\"status\":\"1\",\n\"children\":[]},\n\n{\"key\":\"cpu\",\n\"desc\":\"CPU型号\",\n\"status\":\"1\",\n\"children\":[]},\n\n{\"key\":\"mainFrequency\",\n\"desc\":\"主板型号\",\n\"status\":\"1\",\n\"children\":[]},\n\n{\"key\":\"memory\",\n\"desc\":\"内存大小\",\n\"status\":\"1\",\n\"children\":[]},\n\n{\"key\":\"graphicsCard\",\n\"desc\":\"显卡型号\",\n\"status\":\"1\",\n\"children\":[]},\n\n{\"key\":\"mainNetworkCard\",\n\"desc\":\"主网卡型号\",\n\"status\":\"0\",\n\"children\":[]},\n\n{\"key\":\"ssdModel\",\n\"desc\":\"SSD型号\",\n\"status\":\"0\",\n\"children\":[]},\n\n{\"key\":\"hddModel\",\n\"desc\":\"HDD型号\",\n\"status\":\"0\",\n\"children\":[]}]},\n\n{\"key\":\"\",\n\"desc\":\"系统状态信息\",\n\"status\":\"1\",\n\"children\":[{\"key\":\"cpuTemperature\",\n\"desc\":\"CPU温度\",\n\"status\":\"0\",\n\"children\":[]},\n\n{\"key\":\"cpuUsage\",\n\"desc\":\"CPU使用率\",\n\"status\":\"0\",\n\"children\":[]},\n\n{\"key\":\"graphicsCardTemperature\",\n\"desc\":\"显卡温度\",\n\"status\":\"0\",\n\"children\":[]},\n\n{\"key\":\"graphicsCardUsage\",\n\"desc\":\"显卡使用率\",\n\"status\":\"0\",\n\"children\":[]},\n\n{\"key\":\"chipsetTemperature\",\n\"desc\":\"芯片组温度\",\n\"status\":\"0\",\n\"children\":[]},\n\n{\"key\":\"memoryUsage\",\n\"desc\":\"已用内存\",\n\"status\":\"0\",\n\"children\":[]},\n\n{\"key\":\"diskUsage\",\n\"desc\":\"磁盘使用率\",\n\"status\":\"0\",\n\"children\":[]},\n\n{\"key\":\"diskSpeed\",\n\"desc\":\"磁盘读写速度\",\n\"status\":\"0\",\n\"children\":[]}\n]},\n\n{\"key\":\"\",\n\"desc\":\"其它状态信息\",\n\"status\":\"1\",\n\"children\":[\n\n{\"key\":\"autoSystem\",\n\"desc\":\"自动重装系统\",\n\"status\":\"0\",\n\"children\":[]},\n\n{\"key\":\"manageName\",\n\"desc\":\"管理主机名\",\n\"status\":\"0\",\n\"children\":[]},\n\n{\"key\":\"manageNetwork\",\n\"desc\":\"管理网络信息\",\n\"status\":\"0\",\n\"children\":[]}\n]}\n]},\n{\"key\":\"\",\n\"desc\":\"出租信息\",\n\"status\":\"1\",\n\"children\":[{\"key\":\"\",\n\"desc\":\"主机信息\",\n\"status\":\"1\",\n\"children\":[{\"key\":\"status\",\n\"desc\":\"状态\",\n\"status\":\"1\",\n\"children\":[]},\n\n{\"key\":\"groupName\",\n\"desc\":\"分区\",\n\"status\":\"1\",\n\"children\":[]\n}\n]},\n\n{\"key\":\"\",\n\"desc\":\"出租信息\",\n\"status\":\"1\",\n\"children\":[\n\n{\"key\":\"rentalTime\",\n\"desc\":\"出租时间\",\n\"status\":\"1\",\n\"children\":[]},\n\n{\"key\":\"bootUpTime\",\n\"desc\":\"上机时间\",\n\"status\":\"1\",\n\"children\":[]\n},\n{\"key\":\"endTime\",\n\"desc\":\"到期时间\",\n\"status\":\"1\",\n\"children\":[]},\n\n{\"key\":\"useTimeLong\",\n\"desc\":\"使用时长\",\n\"status\":\"1\",\n\"children\":[]\n},\n{\"key\":\"dateType\",\n\"desc\":\"套餐\",\n\"status\":\"1\",\n\"children\":[]},\n\n{\"key\":\"price\",\n\"desc\":\"价格\",\n\"status\":\"1\",\n\"children\":[]\n},\n\n{\"key\":\"quantity\",\n\"desc\":\"数量\",\n\"status\":\"1\",\n\"children\":[]\n},\n{\"key\":\"discountPrice\",\n\"desc\":\"折扣价格\",\n\"status\":\"1\",\n\"children\":[]},\n\n{\"key\":\"payMoney\",\n\"desc\":\"实际付款\",\n\"status\":\"1\",\n\"children\":[]\n},\n{\"key\":\"giveMoney\",\n\"desc\":\"本机赠送\",\n\"status\":\"1\",\n\"children\":[]},\n{\"key\":\"remark\",\n\"desc\":\"备注\",\n\"status\":\"1\",\n\"children\":[]}\n]},\n\n{\"key\":\"\",\n\"desc\":\"账户信息\",\n\"status\":\"1\",\n\"children\":[\n\n{\"key\":\"memberName\",\n\"desc\":\"用户名\",\n\"status\":\"1\",\n\"children\":[]},\n\n{\"key\":\"discount\",\n\"desc\":\"折扣\",\n\"status\":\"1\",\n\"children\":[]\n},\n{\"key\":\"balanceMoney\",\n\"desc\":\"余额\",\n\"status\":\"1\",\n\"children\":[]},\n\n{\"key\":\"consumptionMoney\",\n\"desc\":\"消费金额\",\n\"status\":\"1\",\n\"children\":[]\n},\n{\"key\":\"totalGiveMoney\",\n\"desc\":\"累计赠送\",\n\"status\":\"1\",\n\"children\":[]},\n\n{\"key\":\"registrationTime\",\n\"desc\":\"开户时间\",\n\"status\":\"1\",\n\"children\":[]\n},\n\n{\"key\":\"memberLevelName\",\n\"desc\":\"会员等级\",\n\"status\":\"1\",\n\"children\":[]\n},\n{\"key\":\"isVerified\",\n\"desc\":\"实名状态\",\n\"status\":\"1\",\n\"children\":[]},\n\n{\"key\":\"isReadUserAgreement\",\n\"desc\":\"用户协议\",\n\"status\":\"1\",\n\"children\":[]\n}\n\n\n]},\n\n{\"key\":\"\",\n\"desc\":\"其它信息\",\n\"status\":\"1\",\n\"children\":[\n{\"key\":\"payWay\",\n\"desc\":\"付款方式\",\n\"status\":\"1\",\n\"children\":[]},\n\n{\"key\":\"rentalUserName\",\n\"desc\":\"出租员\",\n\"status\":\"1\",\n\"children\":[]\n}\n\n]}]}\n]');
-INSERT INTO `t_sys_config` VALUES ('1475190087451971586', NULL, NULL, 'PAGE_SIZES', '[10,20,30,50,100,200,500,1000,1500,2000]');
+INSERT INTO `t_sys_config` VALUES ('1440552118439141378', NULL, NULL, 'RENTAL_FIELD', '[{\"key\":\"\",\n\"desc\":\"设备信息\",\n\"status\":\"1\",\n\"children\":[\n{\"key\":\"\",\n\"desc\":\"计算机信息\",\n\"status\":\"1\",\n\"children\":[\n{\"key\":\"name\",\n\"desc\":\"计算机名\",\n\"status\":\"1\",\n\"children\":[]},\n\n{\"key\":\"ip\",\n\"desc\":\"ip地址\",\n\"status\":\"1\",\n\"children\":[]},\n\n{\"key\":\"subnetMask\",\n\"desc\":\"子网掩码\",\n\"status\":\"1\",\n\"children\":[]},\n\n{\"key\":\"gateway\",\n\"desc\":\"网关\",\n\"status\":\"1\",\n\"children\":[]},\n\n{\"key\":\"firstDns\",\n\"desc\":\"首选DNS\",\n\"status\":\"1\",\n\"children\":[]},\n\n{\"key\":\"twoDns\",\n\"desc\":\"备选DNS\",\n\"status\":\"1\",\n\"children\":[]}]},\n\n{\"key\":\"\",\n\"desc\":\"硬件信息\",\n\"status\":\"1\",\n\"children\":[\n{\"key\":\"mac\",\n\"desc\":\"MAC地址\",\n\"status\":\"1\",\n\"children\":[]},\n\n{\"key\":\"cpu\",\n\"desc\":\"CPU型号\",\n\"status\":\"1\",\n\"children\":[]},\n\n{\"key\":\"mainFrequency\",\n\"desc\":\"主板型号\",\n\"status\":\"1\",\n\"children\":[]},\n\n{\"key\":\"memory\",\n\"desc\":\"内存大小\",\n\"status\":\"1\",\n\"children\":[]},\n\n{\"key\":\"graphicsCard\",\n\"desc\":\"显卡型号\",\n\"status\":\"1\",\n\"children\":[]},\n\n{\"key\":\"mainNetworkCard\",\n\"desc\":\"主网卡型号\",\n\"status\":\"0\",\n\"children\":[]},\n\n{\"key\":\"ssdModel\",\n\"desc\":\"SSD型号\",\n\"status\":\"0\",\n\"children\":[]},\n\n{\"key\":\"hddModel\",\n\"desc\":\"HDD型号\",\n\"status\":\"0\",\n\"children\":[]}]},\n\n{\"key\":\"\",\n\"desc\":\"系统状态信息\",\n\"status\":\"1\",\n\"children\":[{\"key\":\"cpuTemperature\",\n\"desc\":\"CPU温度\",\n\"status\":\"0\",\n\"children\":[]},\n\n{\"key\":\"cpuUsage\",\n\"desc\":\"CPU使用率\",\n\"status\":\"0\",\n\"children\":[]},\n\n{\"key\":\"graphicsCardTemperature\",\n\"desc\":\"显卡温度\",\n\"status\":\"0\",\n\"children\":[]},\n\n{\"key\":\"graphicsCardUsage\",\n\"desc\":\"显卡使用率\",\n\"status\":\"0\",\n\"children\":[]},\n\n{\"key\":\"chipsetTemperature\",\n\"desc\":\"芯片组温度\",\n\"status\":\"0\",\n\"children\":[]},\n\n{\"key\":\"memoryUsage\",\n\"desc\":\"已用内存\",\n\"status\":\"0\",\n\"children\":[]},\n\n{\"key\":\"diskUsage\",\n\"desc\":\"磁盘使用率\",\n\"status\":\"0\",\n\"children\":[]},\n\n{\"key\":\"diskSpeed\",\n\"desc\":\"磁盘读写速度\",\n\"status\":\"0\",\n\"children\":[]}\n]},\n\n{\"key\":\"\",\n\"desc\":\"其它状态信息\",\n\"status\":\"1\",\n\"children\":[\n\n{\"key\":\"autoSystem\",\n\"desc\":\"自动重装系统\",\n\"status\":\"0\",\n\"children\":[]},\n\n{\"key\":\"manageName\",\n\"desc\":\"管理主机名\",\n\"status\":\"0\",\n\"children\":[]},\n\n{\"key\":\"manageNetwork\",\n\"desc\":\"管理网络信息\",\n\"status\":\"0\",\n\"children\":[]}\n]}\n]},\n{\"key\":\"\",\n\"desc\":\"出租信息\",\n\"status\":\"1\",\n\"children\":[{\"key\":\"\",\n\"desc\":\"主机信息\",\n\"status\":\"1\",\n\"children\":[\n{\"key\":\"status\",\n\"desc\":\"状态\",\n\"status\":\"1\",\n\"children\":[]},\n\n{\"key\":\"clientVersion\",\n\"desc\":\"客户端版本\",\n\"status\":\"1\",\n\"children\":[]},\n\n{\"key\":\"groupName\",\n\"desc\":\"分区\",\n\"status\":\"1\",\n\"children\":[]}\n]},\n\n{\"key\":\"\",\n\"desc\":\"出租信息\",\n\"status\":\"1\",\n\"children\":[\n\n{\"key\":\"rentalTime\",\n\"desc\":\"出租时间\",\n\"status\":\"1\",\n\"children\":[]},\n\n{\"key\":\"bootUpTime\",\n\"desc\":\"上机时间\",\n\"status\":\"1\",\n\"children\":[]\n},\n{\"key\":\"endTime\",\n\"desc\":\"到期时间\",\n\"status\":\"1\",\n\"children\":[]},\n\n{\"key\":\"useTimeLong\",\n\"desc\":\"使用时长\",\n\"status\":\"1\",\n\"children\":[]\n},\n{\"key\":\"dateType\",\n\"desc\":\"套餐\",\n\"status\":\"1\",\n\"children\":[]},\n\n{\"key\":\"price\",\n\"desc\":\"价格\",\n\"status\":\"1\",\n\"children\":[]\n},\n\n{\"key\":\"quantity\",\n\"desc\":\"数量\",\n\"status\":\"1\",\n\"children\":[]\n},\n{\"key\":\"discountPrice\",\n\"desc\":\"折扣价格\",\n\"status\":\"1\",\n\"children\":[]},\n\n{\"key\":\"payMoney\",\n\"desc\":\"实际付款\",\n\"status\":\"1\",\n\"children\":[]\n},\n{\"key\":\"giveMoney\",\n\"desc\":\"本机赠送\",\n\"status\":\"1\",\n\"children\":[]},\n{\"key\":\"remark\",\n\"desc\":\"备注\",\n\"status\":\"1\",\n\"children\":[]}\n]},\n\n{\"key\":\"\",\n\"desc\":\"账户信息\",\n\"status\":\"1\",\n\"children\":[\n\n{\"key\":\"memberName\",\n\"desc\":\"用户名\",\n\"status\":\"1\",\n\"children\":[]},\n\n{\"key\":\"discount\",\n\"desc\":\"折扣\",\n\"status\":\"1\",\n\"children\":[]\n},\n{\"key\":\"balanceMoney\",\n\"desc\":\"余额\",\n\"status\":\"1\",\n\"children\":[]},\n\n{\"key\":\"consumptionMoney\",\n\"desc\":\"消费金额\",\n\"status\":\"1\",\n\"children\":[]\n},\n{\"key\":\"totalGiveMoney\",\n\"desc\":\"累计赠送\",\n\"status\":\"1\",\n\"children\":[]},\n\n{\"key\":\"registrationTime\",\n\"desc\":\"开户时间\",\n\"status\":\"1\",\n\"children\":[]\n},\n\n{\"key\":\"memberLevelName\",\n\"desc\":\"会员等级\",\n\"status\":\"1\",\n\"children\":[]\n},\n{\"key\":\"isVerified\",\n\"desc\":\"实名状态\",\n\"status\":\"1\",\n\"children\":[]},\n\n{\"key\":\"isReadUserAgreement\",\n\"desc\":\"用户协议\",\n\"status\":\"1\",\n\"children\":[]\n}\n\n\n]},\n\n{\"key\":\"\",\n\"desc\":\"其它信息\",\n\"status\":\"1\",\n\"children\":[\n{\"key\":\"payWay\",\n\"desc\":\"付款方式\",\n\"status\":\"1\",\n\"children\":[]},\n\n{\"key\":\"rentalUserName\",\n\"desc\":\"出租员\",\n\"status\":\"1\",\n\"children\":[]\n}\n\n]}]}\n]');
+INSERT INTO `t_sys_config` VALUES ('1475190087451971586', NULL, NULL, 'PAGE_SIZES', '[50,100,200,500,1000,1500]');
+INSERT INTO `t_sys_config` VALUES ('1612450704682553345', NULL, NULL, 'REMOTE_CONFIG', '{\"description\":\"配置的一段话\",\"remoteModels\":[\"LLK\",\"XRK\",\"TO_DESK\",\"INTRANET_IP\",\"TEAM_VIEWER\"]}');
+INSERT INTO `t_sys_config` VALUES ('1621785939422597121', NULL, NULL, 'WAIT_RENTAL_TIME', '500');
+INSERT INTO `t_sys_config` VALUES ('1628775128222355458', NULL, NULL, 'COST_CONFIG', '{\"freeTimeLong\":10,\"refundServiceCharge\":5}');
 COMMIT;
 
 -- ----------------------------
@@ -729,7 +1114,7 @@ CREATE TABLE `t_system_version` (
                                     `url` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL COMMENT '下载url',
                                     `md5` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL COMMENT '文件md5值',
                                     `sys_version` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL COMMENT '系统版本号',
-                                    `force_update` tinyint(2) NOT NULL COMMENT '0 不强制更新 1 强制更新',
+                                    `force_update` tinyint NOT NULL COMMENT '0 不强制更新 1 强制更新',
                                     `create_time` datetime DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
                                     `creator` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL COMMENT '创建人',
                                     `update_time` datetime DEFAULT NULL COMMENT '更新时间',
@@ -737,6 +1122,11 @@ CREATE TABLE `t_system_version` (
                                     PRIMARY KEY (`id`) USING BTREE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci ROW_FORMAT=DYNAMIC;
 
+-- ----------------------------
+-- Records of t_system_version
+-- ----------------------------
+BEGIN;
+COMMIT;
 
 -- ----------------------------
 -- Table structure for t_trade_record
@@ -746,22 +1136,26 @@ CREATE TABLE `t_trade_record` (
                                   `id` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
                                   `member_id` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL COMMENT '会员ID',
                                   `combo_id` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL COMMENT '套餐ID',
+                                  `pay_id` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL COMMENT '授权系统支付单号',
                                   `date_type` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL COMMENT '套餐类型',
-                                  `multiple` int(2) DEFAULT NULL COMMENT '倍数',
+                                  `multiple` int DEFAULT NULL COMMENT '倍数',
                                   `main_frame_id` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL COMMENT '主机ID',
-                                  `quantity` int(11) NOT NULL DEFAULT '1' COMMENT '数量1',
-                                  `buy_way` tinyint(2) NOT NULL DEFAULT '2' COMMENT '1 抵扣购买 2 叠加购买',
+                                  `quantity` int NOT NULL DEFAULT '1' COMMENT '数量1',
+                                  `discount` decimal(5,2) DEFAULT NULL COMMENT '订单折扣',
+                                  `buy_way` tinyint NOT NULL DEFAULT '2' COMMENT '1 抵扣购买 2 叠加购买',
                                   `pay_source` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL DEFAULT 'OFFLINE',
-                                  `pay_way` tinyint(2) NOT NULL DEFAULT '0' COMMENT '0 客服 1 自助',
-                                  `pay_type` tinyint(2) NOT NULL DEFAULT '1' COMMENT '1 收入 2 支出',
+                                  `pay_way` tinyint NOT NULL DEFAULT '0' COMMENT '0 客服 1 自助',
+                                  `pay_type` tinyint NOT NULL DEFAULT '1' COMMENT '1 收入 2 支出',
                                   `type` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL COMMENT '交易类型',
-                                  `amount` int(11) NOT NULL DEFAULT '0' COMMENT '支付金额',
-                                  `give_amount` int(11) NOT NULL DEFAULT '0' COMMENT '赠送金额',
-                                  `before_balance_money` int(11) NOT NULL DEFAULT '0',
-                                  `after_balance_money` int(11) NOT NULL DEFAULT '0',
-                                  `balance_amount` int(11) NOT NULL DEFAULT '0' COMMENT '混合时余额支付金额',
-                                  `pay_status` tinyint(2) NOT NULL DEFAULT '0' COMMENT '0 待支付 1 交易关闭 2 已经支付 3 交易成功',
+                                  `amount` int NOT NULL DEFAULT '0' COMMENT '支付金额',
+                                  `service_charge` int DEFAULT '0' COMMENT '手续费',
+                                  `give_amount` int NOT NULL DEFAULT '0' COMMENT '赠送金额',
+                                  `before_balance_money` int NOT NULL DEFAULT '0',
+                                  `after_balance_money` int NOT NULL DEFAULT '0',
+                                  `balance_amount` int NOT NULL DEFAULT '0' COMMENT '余额支付金额',
+                                  `pay_status` tinyint NOT NULL DEFAULT '0' COMMENT '0 待支付 1 交易关闭 2 已经支付 3 交易成功',
                                   `pay_time` datetime DEFAULT NULL COMMENT '支付时间',
+                                  `del_flag` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT '1',
                                   `remark` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL COMMENT '备注',
                                   `create_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
                                   `creator` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL COMMENT '创建人',
@@ -770,6 +1164,11 @@ CREATE TABLE `t_trade_record` (
                                   PRIMARY KEY (`id`) USING BTREE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci ROW_FORMAT=DYNAMIC;
 
+-- ----------------------------
+-- Records of t_trade_record
+-- ----------------------------
+BEGIN;
+COMMIT;
 
 -- ----------------------------
 -- Table structure for t_trade_record_info
@@ -779,12 +1178,17 @@ CREATE TABLE `t_trade_record_info` (
                                        `id` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
                                        `trade_record_id` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL COMMENT '订单ID',
                                        `main_frame_id` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL COMMENT '主机ID',
-                                       `amount` int(11) NOT NULL DEFAULT '0' COMMENT '支付金额',
-                                       `give_amount` int(11) NOT NULL DEFAULT '0' COMMENT '赠送金额',
+                                       `expire_time` datetime DEFAULT NULL COMMENT '到期时间',
+                                       `amount` int NOT NULL DEFAULT '0' COMMENT '支付金额',
+                                       `give_amount` int NOT NULL DEFAULT '0' COMMENT '赠送金额',
                                        `create_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
                                        PRIMARY KEY (`id`) USING BTREE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci ROW_FORMAT=DYNAMIC;
 
+-- ----------------------------
+-- Records of t_trade_record_info
+-- ----------------------------
+BEGIN;
+COMMIT;
 
 SET FOREIGN_KEY_CHECKS = 1;
-
