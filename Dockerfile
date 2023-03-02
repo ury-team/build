@@ -1,10 +1,10 @@
 # client source
-FROM node:16.10.0 as client
+FROM node:16.18.1 as client
 RUN apt-get update && apt-get install -y \
-        make \ 
-        gcc \ 
+        make \
+        gcc \
         g++ \
-        git \ 
+        git \
         python \
         openssl \
         curl \
