@@ -20,7 +20,7 @@ RUN npm run build:prod
 
 FROM maven:3.8-jdk-8 as build
 
-COPY ./setting.xml /usr/share/maven/conf/settings.xml
+COPY ./settings.xml /usr/share/maven/conf/settings.xml
 RUN mkdir -p /workspace
 WORKDIR /workspace
 # can remove
